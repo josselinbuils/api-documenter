@@ -11,6 +11,9 @@ const excludedItemKinds = [
 ];
 
 export function getApiItemFilename(apiItem: ApiItem): string {
+  if (apiItem.kind === ApiItemKind.Package) {
+    return 'README.md';
+  }
   let baseName = '';
 
   for (const hierarchyItem of apiItem.getHierarchy()) {
@@ -25,9 +28,9 @@ export function getApiItemFilename(apiItem: ApiItem): string {
     }
 
     if (!excludedItemKinds.includes(hierarchyItem.kind)) {
-      baseName += '.' + qualifiedName;
+      baseName += `${baseName.length > 0 ? '.' : ''}${qualifiedName}`;
     }
   }
 
-  return baseName.toLowerCase() + '.md';
+  return `${baseName}.md`;
 }
