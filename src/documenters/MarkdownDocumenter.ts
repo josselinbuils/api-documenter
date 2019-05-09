@@ -865,12 +865,14 @@ export class MarkdownDocumenter {
   }
 
   private _writeBreadcrumb(output: DocSection, apiItem: ApiItem): void {
-    // output.appendNodeInParagraph(new DocLinkTag({
-    //   configuration: this._tsdocConfiguration,
-    //   tagName: '@link',
-    //   linkText: 'Home',
-    //   urlDestination: './index.md'
-    // }));
+    output.appendNodeInParagraph(
+      new DocLinkTag({
+        configuration: this._tsdocConfiguration,
+        tagName: '@link',
+        linkText: 'Home',
+        urlDestination: '../README.md'
+      })
+    );
 
     for (const hierarchyItem of apiItem.getHierarchy()) {
       switch (hierarchyItem.kind) {
