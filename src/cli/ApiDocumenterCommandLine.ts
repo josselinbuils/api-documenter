@@ -3,7 +3,6 @@
 
 import { CommandLineParser } from '@microsoft/ts-command-line';
 import { MarkdownAction } from './MarkdownAction';
-import { YamlAction } from './YamlAction';
 
 export class ApiDocumenterCommandLine extends CommandLineParser {
   constructor() {
@@ -23,6 +22,5 @@ export class ApiDocumenterCommandLine extends CommandLineParser {
 
   private _populateActions(): void {
     this.addAction(new MarkdownAction(this));
-    this.addAction(new YamlAction(this));
   }
 }

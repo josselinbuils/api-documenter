@@ -1,6 +1,6 @@
 {
   "name": "@josselinbuils/api-documenter",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Read JSON files from api-extractor, generate documentation pages.",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   "homepage": "https://github.com/josselinbuils/api-documenter/#readme",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf lib && tsc",
     "test": "jest"
   },
   "bin": {
@@ -28,6 +28,7 @@
     "@types/js-yaml": "3.12.1",
     "@types/node": "8.5.8",
     "jest": "~23.6.0",
+    "rimraf": "^2.6.3",
     "typescript": "^3.4.5"
   },
   "prettier": {
