@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 
+import { InternalError } from '@microsoft/node-core-library';
 import {
   DocNode,
   DocNodeKind,
@@ -17,9 +18,7 @@ import {
   DocEscapedText,
   DocErrorText
 } from '@microsoft/tsdoc';
-import { InternalError } from '@microsoft/node-core-library';
-
-import { IndentedWriter } from '../utils/IndentedWriter';
+import { getEscapedText, getTableEscapedText, IndentedWriter } from './utils';
 
 export interface IMarkdownEmitterOptions {}
 
@@ -41,7 +40,7 @@ export interface IMarkdownEmitterContext<TOptions = IMarkdownEmitterOptions> {
  * For more info:  https://en.wikipedia.org/wiki/Markdown
  */
 export class MarkdownEmitter {
-  public emit(
+  emit(
     stringBuilder: StringBuilder,
     docNode: DocNode,
     options: IMarkdownEmitterOptions
@@ -66,26 +65,6 @@ export class MarkdownEmitter {
     writer.ensureNewLine(); // finish the last line
 
     return writer.toString();
-  }
-
-  protected getEscapedText(text: string): string {
-    const textWithBackslashes: string = text
-      .replace(/\\/g, '\\\\') // first replace the escape character
-      .replace(/[*#[\]_|`~]/g, x => '\\' + x) // then escape any special characters
-      .replace(/---/g, '\\-\\-\\-') // hyphens only if it's 3 or more
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-    return textWithBackslashes;
-  }
-
-  protected getTableEscapedText(text: string): string {
-    return text
-      .replace(/&/g, '&amp;')
-      .replace(/"/g, '&quot;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/\|/g, '&#124;');
   }
 
   /**
@@ -121,7 +100,7 @@ export class MarkdownEmitter {
           writer.write('`');
         }
         if (context.insideTable) {
-          const code: string = this.getTableEscapedText(docCodeSpan.code);
+          const code: string = getTableEscapedText(docCodeSpan.code);
           const parts: string[] = code.split(/\r?\n/g);
           writer.write(parts.join('</code><br/><code>'));
         } else {
@@ -225,7 +204,7 @@ export class MarkdownEmitter {
         ? docLinkTag.linkText
         : docLinkTag.urlDestination!;
 
-    const encodedLinkText: string = this.getEscapedText(
+    const encodedLinkText: string = getEscapedText(
       linkText.replace(/\s+/g, ' ')
     );
 
@@ -271,7 +250,7 @@ export class MarkdownEmitter {
         writer.write('<i>');
       }
 
-      writer.write(this.getEscapedText(middle));
+      writer.write(getEscapedText(middle));
 
       if (context.italicRequested) {
         writer.write('</i>');

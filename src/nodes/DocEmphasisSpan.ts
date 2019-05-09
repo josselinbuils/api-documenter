@@ -22,20 +22,18 @@ export interface IDocEmphasisSpanParameters
  * or both.
  */
 export class DocEmphasisSpan extends DocNodeContainer {
-  public readonly bold: boolean;
-  public readonly italic: boolean;
+  readonly bold: boolean;
+  readonly italic: boolean;
 
-  public constructor(
-    parameters: IDocEmphasisSpanParameters,
-    children?: DocNode[]
-  ) {
+  constructor(parameters: IDocEmphasisSpanParameters, children?: DocNode[]) {
     super(parameters, children);
     this.bold = !!parameters.bold;
     this.italic = !!parameters.italic;
   }
 
+  // noinspection JSMethodCanBeStatic
   /** @override */
-  public get kind(): string {
+  get kind(): string {
     return CustomDocNodeKind.EmphasisSpan;
   }
 }

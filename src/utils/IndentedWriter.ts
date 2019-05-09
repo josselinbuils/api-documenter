@@ -35,7 +35,7 @@ export class IndentedWriter {
    * The text characters used to create one level of indentation.
    * Two spaces by default.
    */
-  public defaultIndentPrefix: string = '  ';
+  defaultIndentPrefix: string = '  ';
 
   private readonly _builder: IStringBuilder;
 
@@ -46,7 +46,7 @@ export class IndentedWriter {
   private readonly _indentStack: string[];
   private _indentText: string;
 
-  public constructor(builder?: IStringBuilder) {
+  constructor(builder?: IStringBuilder) {
     this._builder = builder === undefined ? new StringBuilder() : builder;
 
     this._latestChunk = undefined;
@@ -60,11 +60,11 @@ export class IndentedWriter {
   /**
    * Retrieves the output that was built so far.
    */
-  public getText(): string {
+  getText(): string {
     return this._builder.toString();
   }
 
-  public toString(): string {
+  toString(): string {
     return this.getText();
   }
 
@@ -75,7 +75,7 @@ export class IndentedWriter {
    * Each call to IndentedWriter.increaseIndent() must be followed by a
    * corresponding call to IndentedWriter.decreaseIndent().
    */
-  public increaseIndent(indentPrefix?: string): void {
+  increaseIndent(indentPrefix?: string): void {
     this._indentStack.push(
       indentPrefix !== undefined ? indentPrefix : this.defaultIndentPrefix
     );
@@ -86,7 +86,7 @@ export class IndentedWriter {
    * Decreases the indentation, reverting the effect of the corresponding call
    * to IndentedWriter.increaseIndent().
    */
-  public decreaseIndent(): void {
+  decreaseIndent(): void {
     this._indentStack.pop();
     this._updateIndentText();
   }
@@ -95,7 +95,7 @@ export class IndentedWriter {
    * A shorthand for ensuring that increaseIndent()/decreaseIndent() occur
    * in pairs.
    */
-  public indentScope(scope: () => void, indentPrefix?: string): void {
+  indentScope(scope: () => void, indentPrefix?: string): void {
     this.increaseIndent(indentPrefix);
     scope();
     this.decreaseIndent();
@@ -104,7 +104,7 @@ export class IndentedWriter {
   /**
    * Adds a newline if the file pointer is not already at the start of the line (or start of the stream).
    */
-  public ensureNewLine(): void {
+  ensureNewLine(): void {
     const lastCharacter: string = this.peekLastCharacter();
     if (lastCharacter !== '\n' && lastCharacter !== '') {
       this._writeNewLine();
@@ -114,7 +114,7 @@ export class IndentedWriter {
   /**
    * Adds up to two newlines to ensure that there is a blank line above the current line.
    */
-  public ensureSkippedLine(): void {
+  ensureSkippedLine(): void {
     if (this.peekLastCharacter() !== '\n') {
       this._writeNewLine();
     }
@@ -128,7 +128,7 @@ export class IndentedWriter {
   /**
    * Returns the last character that was written, or an empty string if no characters have been written yet.
    */
-  public peekLastCharacter(): string {
+  peekLastCharacter(): string {
     if (this._latestChunk !== undefined) {
       return this._latestChunk.substr(-1, 1);
     }
@@ -139,7 +139,7 @@ export class IndentedWriter {
    * Returns the second to last character that was written, or an empty string if less than one characters
    * have been written yet.
    */
-  public peekSecondLastCharacter(): string {
+  peekSecondLastCharacter(): string {
     if (this._latestChunk !== undefined) {
       if (this._latestChunk.length > 1) {
         return this._latestChunk.substr(-2, 1);
@@ -156,7 +156,7 @@ export class IndentedWriter {
    * to the current indentation level.  If the string contains multiple newlines,
    * each line will be indented separately.
    */
-  public write(message: string): void {
+  write(message: string): void {
     if (message.length === 0) {
       return;
     }
@@ -185,7 +185,7 @@ export class IndentedWriter {
    * A shorthand for writing an optional message, followed by a newline.
    * Indentation is applied following the semantics of IndentedWriter.write().
    */
-  public writeLine(message: string = ''): void {
+  writeLine(message: string = ''): void {
     if (message.length > 0) {
       this.write(message);
     }

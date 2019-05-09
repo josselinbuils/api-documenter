@@ -1,14 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 
-import { IDocNodeParameters, DocNode, DocPlainText } from '@microsoft/tsdoc';
-import { CustomDocNodeKind } from './CustomDocNodeKind';
+import { DocNode, DocPlainText } from '@microsoft/tsdoc';
+import { CustomDocNodeKind, CustomDocNodes } from './CustomDocNodeKind';
 import { DocTableCell } from './DocTableCell';
-
-/**
- * Constructor parameters for {@link DocTableRow}.
- */
-export interface IDocTableRowParameters extends IDocNodeParameters {}
 
 /**
  * Represents table row, similar to an HTML `<tr>` element.
@@ -16,11 +11,8 @@ export interface IDocTableRowParameters extends IDocNodeParameters {}
 export class DocTableRow extends DocNode {
   private readonly _cells: DocTableCell[];
 
-  public constructor(
-    parameters: IDocTableRowParameters,
-    cells?: ReadonlyArray<DocTableCell>
-  ) {
-    super(parameters);
+  constructor(cells?: ReadonlyArray<DocTableCell>) {
+    super({ configuration: CustomDocNodes.configuration });
 
     this._cells = [];
     if (cells) {
@@ -30,29 +22,28 @@ export class DocTableRow extends DocNode {
     }
   }
 
+  // noinspection JSMethodCanBeStatic
   /** @override */
-  public get kind(): string {
+  get kind(): string {
     return CustomDocNodeKind.TableRow;
   }
 
-  public get cells(): ReadonlyArray<DocTableCell> {
+  get cells(): ReadonlyArray<DocTableCell> {
     return this._cells;
   }
 
-  public addCell(cell: DocTableCell): void {
+  addCell(cell: DocTableCell): void {
     this._cells.push(cell);
   }
 
-  public createAndAddCell(): DocTableCell {
-    const newCell: DocTableCell = new DocTableCell({
-      configuration: this.configuration
-    });
+  createAndAddCell(): DocTableCell {
+    const newCell = new DocTableCell();
     this.addCell(newCell);
     return newCell;
   }
 
-  public addPlainTextCell(cellContent: string): DocTableCell {
-    const cell: DocTableCell = this.createAndAddCell();
+  addPlainTextCell(cellContent: string): DocTableCell {
+    const cell = this.createAndAddCell();
     cell.content.appendNodeInParagraph(
       new DocPlainText({
         configuration: this.configuration,

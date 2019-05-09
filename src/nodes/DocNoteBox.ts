@@ -13,9 +13,9 @@ export interface IDocNoteBoxParameters extends IDocNodeParameters {}
  * Represents a note box, which is typically displayed as a bordered box containing informational text.
  */
 export class DocNoteBox extends DocNode {
-  public readonly content: DocSection;
+  readonly content: DocSection;
 
-  public constructor(
+  constructor(
     parameters: IDocNoteBoxParameters,
     sectionChildNodes?: ReadonlyArray<DocNode>
   ) {
@@ -26,8 +26,9 @@ export class DocNoteBox extends DocNode {
     );
   }
 
+  // noinspection JSMethodCanBeStatic
   /** @override */
-  public get kind(): string {
+  get kind(): string {
     return CustomDocNodeKind.NoteBox;
   }
 

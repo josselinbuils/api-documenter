@@ -24,9 +24,9 @@ export const enum CustomDocNodeKind {
 export class CustomDocNodes {
   private static _configuration: TSDocConfiguration | undefined;
 
-  public static get configuration(): TSDocConfiguration {
+  static get configuration(): TSDocConfiguration {
     if (CustomDocNodes._configuration === undefined) {
-      const configuration: TSDocConfiguration = new TSDocConfiguration();
+      const configuration = new TSDocConfiguration();
 
       configuration.docNodeManager.registerDocNodes(
         '@micrososft/api-documenter',

@@ -1,44 +1,48 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 
-import * as colors from 'colors';
-
-import { DocNode, DocLinkTag, StringBuilder } from '@microsoft/tsdoc';
 import {
   ApiModel,
   IResolveDeclarationReferenceResult,
   ApiItem
 } from '@microsoft/api-extractor-model';
-
-import { CustomDocNodeKind } from '../nodes/CustomDocNodeKind';
-import { DocHeading } from '../nodes/DocHeading';
-import { DocNoteBox } from '../nodes/DocNoteBox';
-import { DocTable } from '../nodes/DocTable';
-import { DocTableCell } from '../nodes/DocTableCell';
-import { DocEmphasisSpan } from '../nodes/DocEmphasisSpan';
+import {
+  DocNode,
+  DocLinkTag,
+  StringBuilder,
+  DocNodeKind
+} from '@microsoft/tsdoc';
+import * as colors from 'colors';
 import {
   MarkdownEmitter,
   IMarkdownEmitterContext,
   IMarkdownEmitterOptions
 } from './MarkdownEmitter';
-import { IndentedWriter } from '../utils/IndentedWriter';
+import {
+  DocHeading,
+  DocEmphasisSpan,
+  DocTable,
+  DocTableCell,
+  CustomDocNodeKind,
+  DocNoteBox
+} from './nodes';
+import { getEscapedText, IndentedWriter } from './utils';
 
 export interface ICustomMarkdownEmitterOptions extends IMarkdownEmitterOptions {
   contextApiItem: ApiItem | undefined;
-
   onGetFilenameForApiItem: (apiItem: ApiItem) => string | undefined;
 }
 
 export class CustomMarkdownEmitter extends MarkdownEmitter {
   private _apiModel: ApiModel;
 
-  public constructor(apiModel: ApiModel) {
+  constructor(apiModel: ApiModel) {
     super();
 
     this._apiModel = apiModel;
   }
 
-  public emit(
+  emit(
     stringBuilder: StringBuilder,
     docNode: DocNode,
     options: ICustomMarkdownEmitterOptions
@@ -54,8 +58,8 @@ export class CustomMarkdownEmitter extends MarkdownEmitter {
   ): void {
     const writer: IndentedWriter = context.writer;
 
-    switch (docNode.kind) {
-      case CustomDocNodeKind.Heading: {
+    switch (docNode.kind as DocNodeKind | CustomDocNodeKind) {
+      case CustomDocNodeKind.Heading:
         const docHeading: DocHeading = docNode as DocHeading;
         writer.ensureSkippedLine();
 
@@ -74,11 +78,11 @@ export class CustomMarkdownEmitter extends MarkdownEmitter {
             prefix = '####';
         }
 
-        writer.writeLine(prefix + ' ' + this.getEscapedText(docHeading.title));
+        writer.writeLine(prefix + ' ' + getEscapedText(docHeading.title));
         writer.writeLine();
         break;
-      }
-      case CustomDocNodeKind.NoteBox: {
+
+      case CustomDocNodeKind.NoteBox:
         const docNoteBox: DocNoteBox = docNode as DocNoteBox;
         writer.ensureNewLine();
 
@@ -91,8 +95,8 @@ export class CustomMarkdownEmitter extends MarkdownEmitter {
 
         writer.writeLine();
         break;
-      }
-      case CustomDocNodeKind.Table: {
+
+      case CustomDocNodeKind.Table:
         const docTable: DocTable = docNode as DocTable;
         // GitHub's markdown renderer chokes on tables that don't have a blank line above them,
         // whereas VS Code's renderer is totally fine with it.
@@ -146,8 +150,8 @@ export class CustomMarkdownEmitter extends MarkdownEmitter {
         context.insideTable = false;
 
         break;
-      }
-      case CustomDocNodeKind.EmphasisSpan: {
+
+      case CustomDocNodeKind.EmphasisSpan:
         const docEmphasisSpan: DocEmphasisSpan = docNode as DocEmphasisSpan;
         const oldBold: boolean = context.boldRequested;
         const oldItalic: boolean = context.italicRequested;
@@ -157,7 +161,7 @@ export class CustomMarkdownEmitter extends MarkdownEmitter {
         context.boldRequested = oldBold;
         context.italicRequested = oldItalic;
         break;
-      }
+
       default:
         super.writeNode(docNode, context, false);
     }
@@ -187,7 +191,7 @@ export class CustomMarkdownEmitter extends MarkdownEmitter {
           linkText = result.resolvedApiItem.getScopedNameWithinPackage();
         }
         if (linkText.length > 0) {
-          const encodedLinkText: string = this.getEscapedText(
+          const encodedLinkText: string = getEscapedText(
             linkText.replace(/\s+/g, ' ')
           );
 

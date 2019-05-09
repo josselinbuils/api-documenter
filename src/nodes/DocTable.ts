@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 
-import { IDocNodeParameters, DocNode } from '@microsoft/tsdoc';
-import { CustomDocNodeKind } from './CustomDocNodeKind';
+import { DocNode } from '@microsoft/tsdoc';
+import { CustomDocNodeKind, CustomDocNodes } from './CustomDocNodeKind';
 import { DocTableRow } from './DocTableRow';
 import { DocTableCell } from './DocTableCell';
 
 /**
  * Constructor parameters for {@link DocTable}.
  */
-export interface IDocTableParameters extends IDocNodeParameters {
+export interface IDocTableParameters {
   headerCells?: ReadonlyArray<DocTableCell>;
   headerTitles?: string[];
 }
@@ -18,17 +18,17 @@ export interface IDocTableParameters extends IDocNodeParameters {
  * Represents table, similar to an HTML `<table>` element.
  */
 export class DocTable extends DocNode {
-  public readonly header: DocTableRow;
+  readonly header: DocTableRow;
 
-  private _rows: DocTableRow[];
+  private readonly _rows: DocTableRow[];
 
-  public constructor(
+  constructor(
     parameters: IDocTableParameters,
     rows?: ReadonlyArray<DocTableRow>
   ) {
-    super(parameters);
+    super({ configuration: CustomDocNodes.configuration, ...parameters });
 
-    this.header = new DocTableRow({ configuration: this.configuration });
+    this.header = new DocTableRow();
     this._rows = [];
 
     if (parameters) {
@@ -56,23 +56,22 @@ export class DocTable extends DocNode {
     }
   }
 
+  // noinspection JSMethodCanBeStatic
   /** @override */
-  public get kind(): string {
+  get kind(): string {
     return CustomDocNodeKind.Table;
   }
 
-  public get rows(): ReadonlyArray<DocTableRow> {
+  get rows(): ReadonlyArray<DocTableRow> {
     return this._rows;
   }
 
-  public addRow(row: DocTableRow): void {
+  addRow(row: DocTableRow): void {
     this._rows.push(row);
   }
 
-  public createAndAddRow(): DocTableRow {
-    const row: DocTableRow = new DocTableRow({
-      configuration: this.configuration
-    });
+  createAndAddRow(): DocTableRow {
+    const row = new DocTableRow();
     this.addRow(row);
     return row;
   }

@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 
-import { IDocNodeParameters, DocNode } from '@microsoft/tsdoc';
-import { CustomDocNodeKind } from './CustomDocNodeKind';
+import { DocNode } from '@microsoft/tsdoc';
+import { CustomDocNodeKind, CustomDocNodes } from './CustomDocNodeKind';
 
 /**
  * Constructor parameters for {@link DocHeading}.
  */
-export interface IDocHeadingParameters extends IDocNodeParameters {
+export interface IDocHeadingParameters {
   title: string;
   level?: number;
 }
@@ -16,15 +16,15 @@ export interface IDocHeadingParameters extends IDocNodeParameters {
  * Represents a section header similar to an HTML `<h1>` or `<h2>` element.
  */
 export class DocHeading extends DocNode {
-  public readonly title: string;
-  public readonly level: number;
+  readonly title: string;
+  readonly level: number;
 
   /**
    * Don't call this directly.  Instead use {@link TSDocParser}
    * @internal
    */
-  public constructor(parameters: IDocHeadingParameters) {
-    super(parameters);
+  constructor(parameters: IDocHeadingParameters) {
+    super({ configuration: CustomDocNodes.configuration, ...parameters });
     this.title = parameters.title;
     this.level = parameters.level !== undefined ? parameters.level : 1;
 
@@ -35,8 +35,9 @@ export class DocHeading extends DocNode {
     }
   }
 
+  // noinspection JSMethodCanBeStatic
   /** @override */
-  public get kind(): string {
+  get kind(): string {
     return CustomDocNodeKind.Heading;
   }
 }

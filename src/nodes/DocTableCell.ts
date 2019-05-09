@@ -1,25 +1,17 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 
-import { IDocNodeParameters, DocNode, DocSection } from '@microsoft/tsdoc';
-import { CustomDocNodeKind } from './CustomDocNodeKind';
-
-/**
- * Constructor parameters for {@link DocTableCell}.
- */
-export interface IDocTableCellParameters extends IDocNodeParameters {}
+import { DocNode, DocSection } from '@microsoft/tsdoc';
+import { CustomDocNodeKind, CustomDocNodes } from './CustomDocNodeKind';
 
 /**
  * Represents table cell, similar to an HTML `<td>` element.
  */
 export class DocTableCell extends DocNode {
-  public readonly content: DocSection;
+  readonly content: DocSection;
 
-  public constructor(
-    parameters: IDocTableCellParameters,
-    sectionChildNodes?: ReadonlyArray<DocNode>
-  ) {
-    super(parameters);
+  constructor(sectionChildNodes?: ReadonlyArray<DocNode>) {
+    super({ configuration: CustomDocNodes.configuration });
 
     this.content = new DocSection(
       { configuration: this.configuration },
@@ -27,8 +19,9 @@ export class DocTableCell extends DocNode {
     );
   }
 
+  // noinspection JSMethodCanBeStatic
   /** @override */
-  public get kind(): string {
+  get kind(): string {
     return CustomDocNodeKind.TableCell;
   }
 }

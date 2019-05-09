@@ -1,13 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 
-import { ApiDocumenterCommandLine } from './ApiDocumenterCommandLine';
 import { BaseAction } from './BaseAction';
-import { MarkdownDocumenter } from '../documenters/MarkdownDocumenter';
+import { MarkdownDocumenter } from '../MarkdownDocumenter';
 import { ApiModel } from '@microsoft/api-extractor-model';
 
 export class MarkdownAction extends BaseAction {
-  constructor(parser: ApiDocumenterCommandLine) {
+  constructor() {
     super({
       actionName: 'markdown',
       summary: 'Generate documentation as Markdown files (*.md)',
