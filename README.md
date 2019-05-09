@@ -1,6 +1,6 @@
 # api-documenter
 
-Based on [@microsoft/api-documenter](https://github.com/josselinbuils/web-build-tools/tree/master/apps/api-documenter).
+Based on [@microsoft/api-documenter](https://github.com/microsoft/web-build-tools/tree/master/apps/api-documenter).
 
 ## Installation
 
