@@ -12,15 +12,11 @@ export class ApiDocumenterCommandLine extends CommandLineParser {
         'Reads *.api.json files produced by api-extractor, ' +
         ' and generates API documentation in various output formats.'
     });
-    this._populateActions();
+    this.addAction(new MarkdownAction());
   }
 
   protected onDefineParameters(): void {
     // override
     // No parameters
-  }
-
-  private _populateActions(): void {
-    this.addAction(new MarkdownAction(this));
   }
 }
