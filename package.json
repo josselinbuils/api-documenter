@@ -24,13 +24,11 @@
     "js-yaml": "~3.13.1"
   },
   "devDependencies": {
-    "@microsoft/rush-stack-compiler-3.2": "0.3.12",
-    "@microsoft/node-library-build": "6.0.60",
     "@types/jest": "23.3.11",
     "@types/js-yaml": "3.12.1",
     "@types/node": "8.5.8",
-    "gulp": "~3.9.1",
-    "jest": "~23.6.0"
+    "jest": "~23.6.0",
+    "typescript": "^3.4.5"
   },
   "prettier": {
     "singleQuote": true
