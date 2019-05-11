@@ -3,7 +3,6 @@
 
 import { BaseAction } from './BaseAction';
 import { MarkdownDocumenter } from '../MarkdownDocumenter';
-import { ApiModel } from '@microsoft/api-extractor-model';
 
 export class MarkdownAction extends BaseAction {
   constructor() {
@@ -18,10 +17,8 @@ export class MarkdownAction extends BaseAction {
 
   protected onExecute(): Promise<void> {
     // override
-    const apiModel: ApiModel = this.buildApiModel();
-    const markdownDocumenter: MarkdownDocumenter = new MarkdownDocumenter(
-      apiModel
-    );
+    const apiModel = this.buildApiModel();
+    const markdownDocumenter = new MarkdownDocumenter(apiModel);
     markdownDocumenter.generateFiles(this.outputFolder);
     return Promise.resolve();
   }

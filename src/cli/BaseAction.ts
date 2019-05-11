@@ -22,12 +22,12 @@ export abstract class BaseAction extends CommandLineAction {
   protected inputFolder: string;
   protected outputFolder: string;
 
-  private _inputFolderParameter: CommandLineStringParameter;
-  private _outputFolderParameter: CommandLineStringParameter;
+  private inputFolderParameter: CommandLineStringParameter;
+  private outputFolderParameter: CommandLineStringParameter;
 
   protected onDefineParameters(): void {
     // override
-    this._inputFolderParameter = this.defineStringParameter({
+    this.inputFolderParameter = this.defineStringParameter({
       parameterLongName: '--input-folder',
       parameterShortName: '-i',
       argumentName: 'FOLDER1',
@@ -36,7 +36,7 @@ export abstract class BaseAction extends CommandLineAction {
         ` If omitted, the default is "./input"`
     });
 
-    this._outputFolderParameter = this.defineStringParameter({
+    this.outputFolderParameter = this.defineStringParameter({
       parameterLongName: '--output-folder',
       parameterShortName: '-o',
       argumentName: 'FOLDER2',
@@ -50,13 +50,13 @@ export abstract class BaseAction extends CommandLineAction {
   protected buildApiModel(): ApiModel {
     const apiModel: ApiModel = new ApiModel();
 
-    this.inputFolder = this._inputFolderParameter.value || './input';
+    this.inputFolder = this.inputFolderParameter.value || './input';
     if (!FileSystem.exists(this.inputFolder)) {
       throw new Error('The input folder does not exist: ' + this.inputFolder);
     }
 
     this.outputFolder =
-      this._outputFolderParameter.value || `./${this.actionName}`;
+      this.outputFolderParameter.value || `./${this.actionName}`;
     FileSystem.ensureFolder(this.outputFolder);
 
     for (const filename of FileSystem.readFolder(this.inputFolder)) {
@@ -67,15 +67,15 @@ export abstract class BaseAction extends CommandLineAction {
       }
     }
 
-    this._applyInheritDoc(apiModel, apiModel);
+    this.applyInheritDoc(apiModel, apiModel);
 
     return apiModel;
   }
 
   // TODO: This is a temporary workaround.  The long term plan is for API Extractor's DocCommentEnhancer
   // to apply all @inheritDoc tags before the .api.json file is written.
-  // See DocCommentEnhancer._applyInheritDoc() for more info.
-  private _applyInheritDoc(apiItem: ApiItem, apiModel: ApiModel): void {
+  // See DocCommentEnhancer.applyInheritDoc() for more info.
+  private applyInheritDoc(apiItem: ApiItem, apiModel: ApiModel): void {
     if (apiItem instanceof ApiDocumentedItem) {
       if (apiItem.tsdocComment) {
         const inheritDocTag: tsdoc.DocInheritDocTag | undefined =
@@ -102,7 +102,7 @@ export abstract class BaseAction extends CommandLineAction {
               result.resolvedApiItem.tsdocComment &&
               result.resolvedApiItem !== apiItem
             ) {
-              this._copyInheritedDocs(
+              this.copyInheritedDocs(
                 apiItem.tsdocComment,
                 result.resolvedApiItem.tsdocComment
               );
@@ -115,7 +115,7 @@ export abstract class BaseAction extends CommandLineAction {
     // Recurse members
     if (ApiItemContainerMixin.isBaseClassOf(apiItem)) {
       for (const member of apiItem.members) {
-        this._applyInheritDoc(member, apiModel);
+        this.applyInheritDoc(member, apiModel);
       }
     }
   }
@@ -124,7 +124,7 @@ export abstract class BaseAction extends CommandLineAction {
    * Copy the content from `sourceDocComment` to `targetDocComment`.
    * This code is borrowed from DocCommentEnhancer as a temporary workaround.
    */
-  private _copyInheritedDocs(
+  private copyInheritedDocs(
     targetDocComment: tsdoc.DocComment,
     sourceDocComment: tsdoc.DocComment
   ): void {
