@@ -1,3 +1,4 @@
+export * from './applyInheritDoc';
 export * from './filterApiItems';
 export * from './getApiItemFilename';
 export * from './getApiItemFilenameLink';
@@ -8,3 +9,4 @@ export * from './getPlural';
 export * from './getPropertyItems';
 export * from './getSignature';
 export * from './getUnscopedName';
+export * from './writeApiItemPage';

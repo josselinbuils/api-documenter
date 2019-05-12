@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "@microsoft/api-extractor-model": "7.1.0",
-    "@microsoft/ts-command-line": "4.2.4",
     "@microsoft/tsdoc": "0.12.9",
     "colors": "~1.2.1",
+    "commander": "^2.20.0",
     "fs-extra": "^8.0.0",
     "lodash.unescape": "^4.0.1",
     "react": "^16.8.6",
