@@ -26,8 +26,8 @@ export const ParameterTable: React.FC<Props> = ({ apiParameterListMixin }) => {
           <ColumnHead>Description</ColumnHead>
         </TableHead>
         <TableBody>
-          {apiParameterListMixin.parameters.map(apiParameter => (
-            <TableRow>
+          {apiParameterListMixin.parameters.map((apiParameter, index) => (
+            <TableRow key={index}>
               <TableCell>{apiParameter.name}</TableCell>
               <TableCell>{apiParameter.parameterTypeExcerpt.text}</TableCell>
               <TableCell>

@@ -30,9 +30,10 @@ export const NamespacePage: React.FC<Props> = ({ apiItem }) => {
   return (
     <>
       <Title>{title}</Title>
-      {members.map(([category, apiItemKind]) => (
+      {members.map(([category, apiItemKind], index) => (
         <MemberTable
           category={category}
+          key={index}
           items={filterApiItems(children, apiItemKind)}
         />
       ))}

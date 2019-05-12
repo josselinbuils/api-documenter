@@ -26,8 +26,8 @@ export const MemberTable: React.FC<Props> = ({ category, items }) => {
           <ColumnHead>Description</ColumnHead>
         </TableHead>
         <TableBody>
-          {items.map(memberItem => (
-            <TableRow>
+          {items.map((memberItem, index) => (
+            <TableRow key={index}>
               <TitleCell apiItem={memberItem} />
               <DescriptionCell apiItem={memberItem} />
             </TableRow>

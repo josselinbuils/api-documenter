@@ -21,8 +21,8 @@ export const EnumMemberTable: React.FC<Props> = ({ apiEnum }) => (
         <ColumnHead>Description</ColumnHead>
       </TableHead>
       <TableBody>
-        {apiEnum.members.map(enumMemberItem => (
-          <TableRow>
+        {apiEnum.members.map((enumMemberItem, index) => (
+          <TableRow key={index}>
             <TableCell>{enumMemberItem.displayName}</TableCell>
             <TableCell>{enumMemberItem.initializerExcerpt.text}</TableCell>
             <DescriptionCell apiItem={enumMemberItem} />

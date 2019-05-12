@@ -14,29 +14,26 @@ export const Breadcrumb: React.FC<Props> = ({ apiItem }) => {
     .getHierarchy()
     .filter(item => !excludedItemKinds.includes(item.kind));
 
+  const packageItem = hierarchyItems.shift();
+
   return (
     <>
       {'\n\n'}
-      {hierarchyItems.map(apiItem =>
-        apiItem.kind === ApiItemKind.Package ? (
-          <>
-            <Link href="../..">
-              {PackageName.getUnscopedName(apiItem.displayName)}
-            </Link>
-            <LinkSeparator />
-            <Link href={getApiItemFilenameLink(apiItem)}>
-              {DOCUMENTATION_TITLE}
-            </Link>
-          </>
-        ) : (
-          <>
-            <LinkSeparator />
-            <Link href={getApiItemFilenameLink(apiItem)}>
-              {apiItem.displayName}
-            </Link>
-          </>
-        )
-      )}
+      <Link href="..">
+        {PackageName.getUnscopedName(packageItem.displayName)}
+      </Link>
+      <LinkSeparator />
+      <Link href={getApiItemFilenameLink(packageItem)}>
+        {DOCUMENTATION_TITLE}
+      </Link>
+      {hierarchyItems.map((apiItem, index) => (
+        <React.Fragment key={index}>
+          <LinkSeparator />
+          <Link href={getApiItemFilenameLink(apiItem)}>
+            {apiItem.displayName}
+          </Link>
+        </React.Fragment>
+      ))}
     </>
   );
 };

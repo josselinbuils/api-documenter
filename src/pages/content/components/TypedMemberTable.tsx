@@ -28,8 +28,8 @@ export const TypedMemberTable: React.FC<Props> = ({ category, items }) => {
           <ColumnHead>Description</ColumnHead>
         </TableHead>
         <TableBody>
-          {items.map(propertyItem => (
-            <TableRow>
+          {items.map((propertyItem, index) => (
+            <TableRow key={index}>
               <TitleCell apiItem={propertyItem} />
               <TypeCell apiItem={propertyItem} />
               <DescriptionCell apiItem={propertyItem} />
