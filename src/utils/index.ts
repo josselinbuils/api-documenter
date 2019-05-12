@@ -1,6 +1,7 @@
 export * from './filterApiItems';
 export * from './getApiItemFilename';
 export * from './getApiItemFilenameLink';
+export * from './getChildren';
 export * from './getCommentText';
 export * from './getEventItems';
 export * from './getPlural';

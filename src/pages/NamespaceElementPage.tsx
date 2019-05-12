@@ -23,7 +23,7 @@ import {
   InterfaceContent
 } from './content';
 
-export const PackageElementPage: React.FC<Props> = ({ apiItem }) => {
+export const NamespaceElementPage: React.FC<Props> = ({ apiItem }) => {
   const isBeta = apiItem.releaseTag === ReleaseTag.Beta;
 
   const tsdocComment =

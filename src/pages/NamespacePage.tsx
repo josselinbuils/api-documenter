@@ -1,11 +1,22 @@
-import { ApiItemKind, ApiPackage } from '@microsoft/api-extractor-model';
+import {
+  ApiItemKind,
+  ApiNamespace,
+  ApiPackage
+} from '@microsoft/api-extractor-model';
 import * as React from 'react';
 import { DOCUMENTATION_TITLE } from '../constants';
-import { filterApiItems } from '../utils';
+import { filterApiItems, getChildren } from '../utils';
 import { Title } from './components';
 import { MemberTable } from './content/components';
 
-export const PackagePage: React.FC<Props> = ({ apiPackage }) => {
+export const NamespacePage: React.FC<Props> = ({ apiItem }) => {
+  const children = getChildren(apiItem);
+
+  const title =
+    apiItem.kind === ApiItemKind.Package
+      ? DOCUMENTATION_TITLE
+      : apiItem.getScopedNameWithinPackage();
+
   const members: [string, ApiItemKind][] = [
     ['Class', ApiItemKind.Class],
     ['Enum', ApiItemKind.Enum],
@@ -18,11 +29,11 @@ export const PackagePage: React.FC<Props> = ({ apiPackage }) => {
 
   return (
     <>
-      <Title>{DOCUMENTATION_TITLE}</Title>
+      <Title>{title}</Title>
       {members.map(([category, apiItemKind]) => (
         <MemberTable
           category={category}
-          items={filterApiItems(apiPackage.members[0].members, apiItemKind)}
+          items={filterApiItems(children, apiItemKind)}
         />
       ))}
     </>
@@ -30,5 +41,5 @@ export const PackagePage: React.FC<Props> = ({ apiPackage }) => {
 };
 
 interface Props {
-  apiPackage: ApiPackage;
+  apiItem: ApiNamespace | ApiPackage;
 }

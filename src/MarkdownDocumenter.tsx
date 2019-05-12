@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
-// See LICENSE in the project root for license information.
-
 import { ApiItem, ApiModel } from '@microsoft/api-extractor-model';
 import { FileSystem, NewlineKind } from '@microsoft/node-core-library';
 import * as unescape from 'lodash.unescape';
@@ -11,10 +8,6 @@ import { PAGE_ITEM_KINDS } from './constants';
 import { Page } from './pages';
 import { getApiItemFilename } from './utils';
 
-/**
- * Renders API documentation in the Markdown file format.
- * For more info:  https://en.wikipedia.org/wiki/Markdown
- */
 export class MarkdownDocumenter {
   private outputFolder: string;
 
