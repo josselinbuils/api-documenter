@@ -1,5 +1,4 @@
 import {
-  ApiDeclaredItem,
   ApiDocumentedItem,
   ApiItem,
   ApiItemKind,
@@ -18,9 +17,6 @@ import { Title } from './Title';
 import { Warning } from './Warning';
 
 export const Page: React.FC<Props> = ({ apiItem }) => {
-  const hasSignature =
-    apiItem instanceof ApiDeclaredItem && apiItem.excerpt.text.length > 0;
-
   const isBeta =
     ApiReleaseTagMixin.isBaseClassOf(apiItem) &&
     apiItem.releaseTag === ReleaseTag.Beta;
@@ -48,9 +44,7 @@ export const Page: React.FC<Props> = ({ apiItem }) => {
           <Description comment={tsdocComment} />
         </>
       )}
-      {hasSignature && (
-        <Signature>{apiItem.getExcerptWithModifiers()}</Signature>
-      )}
+      <Signature apiItem={apiItem} />
       <Tables apiItem={apiItem} />
       {'\n'}
     </>
