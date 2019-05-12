@@ -1,6 +1,6 @@
 import { ApiItem } from '@microsoft/api-extractor-model';
 import fs from 'fs-extra';
-import unescape from 'lodash.unescape';
+import { decode } from 'he';
 import path from 'path';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -12,7 +12,9 @@ export function writeApiItemPage(outputPath: string, apiItem: ApiItem): void {
   if (PAGE_ITEM_KINDS.includes(apiItem.kind)) {
     const filename = path.join(outputPath, getApiItemFilename(apiItem));
 
-    const rendered = unescape(
+    console.log('\n\n\n\n', renderToStaticMarkup(<Page apiItem={apiItem} />));
+
+    const rendered = decode(
       renderToStaticMarkup(<Page apiItem={apiItem} />)
     ).replace(/ +$/gm, '');
 

@@ -13,6 +13,7 @@ import React, { FC, ReactNode } from 'react';
 import {
   BetaWarning,
   Description,
+  Examples,
   ObsolescenceWarning,
   Signature,
   Title
@@ -39,6 +40,7 @@ export const NamespaceElementPage: FC<Props> = ({ apiItem }) => {
       <Description apiItem={apiItem} />
       <Signature apiItem={apiItem} />
       {content}
+      <Examples apiItem={apiItem} />
     </>
   );
 };

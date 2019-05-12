@@ -1,13 +1,13 @@
-import unescape from 'lodash.unescape';
+import { decode } from 'he';
 import React, { FC } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 export const Table: FC = ({ children }) => {
-  const renderedTable = unescape(renderToStaticMarkup(<>{children}</>));
+  const renderedTable = decode(renderToStaticMarkup(<>{children}</>));
   return (
     <>
       {'\n\n'}
-      {makePrettier(renderedTable)}
+      {makeTablePrettier(renderedTable)}
     </>
   );
 };
@@ -15,7 +15,7 @@ export const Table: FC = ({ children }) => {
 /**
  * Ensures that all rows have columns of equal size.
  */
-function makePrettier(renderedTable: string): string {
+function makeTablePrettier(renderedTable: string): string {
   const columnLengths = getColumnLengths(renderedTable);
 
   return renderedTable
