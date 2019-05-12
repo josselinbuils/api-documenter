@@ -1,8 +1,9 @@
+import unescape from 'lodash.unescape';
 import React, { FC } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 export const Table: FC = ({ children }) => {
-  const renderedTable = renderToStaticMarkup(<>{children}</>);
+  const renderedTable = unescape(renderToStaticMarkup(<>{children}</>));
   return (
     <>
       {'\n\n'}

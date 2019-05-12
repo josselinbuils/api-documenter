@@ -7,7 +7,7 @@ import { applyInheritDoc, writeApiItemPage } from './utils';
 import { ApiModel } from '@microsoft/api-extractor-model';
 import { API_EXTRACTOR_BASE_CONFIG } from './constants';
 
-const version = require(path.join(process.cwd(), 'package')).version;
+const version = require(path.join(__dirname, '../package')).version;
 
 program
   .version(version)

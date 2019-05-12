@@ -1,21 +1,17 @@
 import {
-  DocBlock,
-  DocComment,
   DocNode,
   DocNodeKind,
-  DocPlainText
+  DocPlainText,
+  DocSection
 } from '@microsoft/tsdoc';
 
 export function getCommentText(
-  comment: DocBlock | DocComment | undefined,
+  docSection: DocSection | undefined,
   inArray: boolean = false
 ) {
-  if (comment === undefined) {
+  if (docSection === undefined) {
     return '';
   }
-  const docSection =
-    comment instanceof DocBlock ? comment.content : comment.summarySection;
-
   return nodesToString(docSection.nodes[0].getChildNodes(), inArray);
 }
 
@@ -38,7 +34,8 @@ export function nodesToString(
     })
     .join('')
     .replace(/ {2}/g, ' ')
-    .replace(/^\n+|\n+$/g, '');
+    .replace(/^\n+|\n+$/g, '')
+    .trim();
 
   if (useBrLineBreaks) {
     str = str.replace(/\n/g, '<br />');

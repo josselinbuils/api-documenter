@@ -19,7 +19,7 @@ export const MemberTable: FC<Props> = ({ category, items }) => {
 
   return (
     <>
-      <Title>{getPlural(category)}</Title>
+      <Title level={2}>{getPlural(category)}</Title>
       <Table>
         <TableHead>
           <ColumnHead>{category}</ColumnHead>

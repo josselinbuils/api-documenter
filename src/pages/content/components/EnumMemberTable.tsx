@@ -8,12 +8,13 @@ import {
   TableBody,
   TableHead,
   TableRow,
-  TableCell
+  TableCell,
+  TypeCell
 } from './table';
 
 export const EnumMemberTable: FC<Props> = ({ apiEnum }) => (
   <>
-    <Title>Enumeration Members</Title>
+    <Title level={2}>Enumeration Members</Title>
     <Table>
       <TableHead>
         <ColumnHead>Member</ColumnHead>
@@ -24,7 +25,7 @@ export const EnumMemberTable: FC<Props> = ({ apiEnum }) => (
         {apiEnum.members.map((enumMemberItem, index) => (
           <TableRow key={index}>
             <TableCell>{enumMemberItem.displayName}</TableCell>
-            <TableCell>{enumMemberItem.initializerExcerpt.text}</TableCell>
+            <TypeCell input={enumMemberItem} />
             <DescriptionCell apiItem={enumMemberItem} />
           </TableRow>
         ))}

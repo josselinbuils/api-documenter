@@ -7,9 +7,10 @@ import {
   TableBody,
   TableCell,
   TableHead,
-  TableRow
+  TableRow,
+  TypeCell
 } from './table';
-import { getCommentText } from '../../../utils';
+import { getParameterDescription } from '../../../utils';
 
 export const ParameterTable: FC<Props> = ({ apiParameterListMixin }) => {
   if (apiParameterListMixin.parameters.length === 0) {
@@ -18,7 +19,7 @@ export const ParameterTable: FC<Props> = ({ apiParameterListMixin }) => {
 
   return (
     <>
-      <Title>Parameters</Title>
+      <Title level={2}>Parameters</Title>
       <Table>
         <TableHead>
           <ColumnHead>Parameter</ColumnHead>
@@ -29,10 +30,8 @@ export const ParameterTable: FC<Props> = ({ apiParameterListMixin }) => {
           {apiParameterListMixin.parameters.map((apiParameter, index) => (
             <TableRow key={index}>
               <TableCell>{apiParameter.name}</TableCell>
-              <TableCell>{apiParameter.parameterTypeExcerpt.text}</TableCell>
-              <TableCell>
-                {getCommentText(apiParameter.tsdocParamBlock, true)}
-              </TableCell>
+              <TypeCell input={apiParameter} />
+              <TableCell>{getParameterDescription(apiParameter)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

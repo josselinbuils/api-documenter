@@ -20,7 +20,7 @@ export const TypedMemberTable: FC<Props> = ({ category, items }) => {
 
   return (
     <>
-      <Title>{getPlural(category)}</Title>
+      <Title level={2}>{getPlural(category)}</Title>
       <Table>
         <TableHead>
           <ColumnHead>{category}</ColumnHead>
@@ -31,7 +31,7 @@ export const TypedMemberTable: FC<Props> = ({ category, items }) => {
           {items.map((propertyItem, index) => (
             <TableRow key={index}>
               <TitleCell apiItem={propertyItem} />
-              <TypeCell apiItem={propertyItem} />
+              <TypeCell input={propertyItem} />
               <DescriptionCell apiItem={propertyItem} />
             </TableRow>
           ))}

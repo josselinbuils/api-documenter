@@ -25,22 +25,18 @@ import {
 } from './content';
 
 export const NamespaceElementPage: FC<Props> = ({ apiItem }) => {
+  const content = getContent(apiItem);
   const isBeta = (apiItem as ApiReleaseTagMixin).releaseTag === ReleaseTag.Beta;
-
-  const tsdocComment =
-    apiItem instanceof ApiDocumentedItem ? apiItem.tsdocComment : undefined;
-
+  const tsdocComment = (apiItem as ApiDocumentedItem).tsdocComment;
   const isDeprecated =
     tsdocComment !== undefined && tsdocComment.deprecatedBlock !== undefined;
-
-  const content = getContent(apiItem);
 
   return (
     <>
       <Title>{apiItem.getScopedNameWithinPackage()}</Title>
       {isBeta && <BetaWarning />}
       {isDeprecated && <ObsolescenceWarning />}
-      <Description comment={tsdocComment} />
+      <Description apiItem={apiItem} />
       <Signature apiItem={apiItem} />
       {content}
     </>
