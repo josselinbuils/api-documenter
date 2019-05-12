@@ -18,7 +18,9 @@ export const Breadcrumb: FC<Props> = ({ apiItem }) => {
   return (
     <>
       {'\n\n'}
-      <Link href="..">{getUnscopedName(packageItem.displayName)}</Link>
+      <Link href="../README.md">
+        {getUnscopedName(packageItem.displayName)}
+      </Link>
       <LinkSeparator />
       <Link href={getApiItemFilenameLink(packageItem)}>
         {DOCUMENTATION_TITLE}

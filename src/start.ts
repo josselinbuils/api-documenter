@@ -12,8 +12,8 @@ const version = require(path.join(process.cwd(), 'package')).version;
 program
   .version(version)
   .option(
-    '-i, --input-folder <folder>',
-    '.d.ts entry file. Default value: dist/index.d.ts.'
+    '-i, --input-file <file>',
+    'entry .d.ts file. Default value: dist/index.d.ts.'
   )
   .option(
     '-o, --output-folder <folder>',
