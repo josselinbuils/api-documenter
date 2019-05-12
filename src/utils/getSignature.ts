@@ -11,5 +11,6 @@ export function getSignature(apiItem: ApiItem): string {
       (signature, unwantedKeyword) => signature.replace(unwantedKeyword, ''),
       apiItem.excerpt.text
     )
+    .replace(/;$/, '')
     .trim();
 }
