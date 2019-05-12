@@ -1,18 +1,19 @@
+import childProcess from 'child_process';
 import colors from 'colors';
 import program from 'commander';
 import fs from 'fs-extra';
 import path from 'path';
 import { applyInheritDoc, writeApiItemPage } from './utils';
 import { ApiModel } from '@microsoft/api-extractor-model';
+import { API_EXTRACTOR_BASE_CONFIG } from './constants';
 
-const startTime = Date.now();
 const version = require(path.join(process.cwd(), 'package')).version;
 
 program
   .version(version)
   .option(
     '-i, --input-folder <folder>',
-    'folder containing the .api.json files to be  processed. Default value: temp.'
+    '.d.ts entry file. Default value: dist/index.d.ts.'
   )
   .option(
     '-o, --output-folder <folder>',
@@ -23,34 +24,54 @@ program
 
 console.log(colors.bold(`API Documenter v${version}`));
 
-const inputFolder = program.inputFolder || 'temp';
+const inputFile = program.inputFolder || 'dist/index.d.ts';
 const outputFolder = program.outputFolder || 'doc';
 
-const inputPath = path.join(process.cwd(), inputFolder);
+const inputPath = path.join(process.cwd(), inputFile);
 const outputPath = path.join(process.cwd(), outputFolder);
 
-if (!fs.existsSync(inputFolder)) {
-  throw new Error(`The input folder does not exist: ${inputFolder}`);
+if (!fs.existsSync(inputFile)) {
+  throw new Error(`The input file does not exist: ${inputFile}`);
 }
 
-// Build API model
+// Creates or empty temporary folders
 
-console.log(`Build API model from ${colors.blue(inputFolder)}`);
+const tmpPath = path.join(process.cwd(), 'tmp');
+const apiExtractorConfigPath = path.join(tmpPath, 'api-extractor.json');
+const apiJsonFilePath = path.join(tmpPath, 'model.api.json');
+
+fs.emptyDirSync(tmpPath);
+
+// Extracts API
+
+console.log(`Extracts API from ${colors.blue(inputFile)}`);
+
+const apiExtractorConfig: any = {
+  ...API_EXTRACTOR_BASE_CONFIG,
+  mainEntryPointFilePath: inputPath
+};
+apiExtractorConfig.docModel.apiJsonFilePath = apiJsonFilePath;
+
+fs.writeJSONSync(apiExtractorConfigPath, apiExtractorConfig);
+
+childProcess.execSync(
+  `api-extractor run --local --verbose -c "${apiExtractorConfigPath}"`
+);
+
+// Builds API model
+
+console.log(`Builds API model`);
 
 const apiModel = new ApiModel();
-
-fs.readdirSync(inputPath).forEach(filename => {
-  if (filename.match(/\.api\.json$/i)) {
-    apiModel.loadPackage(path.join(inputPath, filename));
-  }
-});
-
+apiModel.loadPackage(apiJsonFilePath);
 applyInheritDoc(apiModel, apiModel);
 
 // Write documentation
 
-console.log(`Write documentation in ${colors.blue(outputFolder)}`);
+console.log(`Writes documentation in ${colors.blue(outputFolder)}`);
+
 fs.emptyDirSync(outputPath);
 writeApiItemPage(outputPath, apiModel.packages[0]);
 
-console.log(`Done in ${Date.now() - startTime}ms`);
+// Removes temporary folder
+fs.removeSync(tmpPath);
