@@ -6,8 +6,8 @@ import {
   ApiReleaseTagMixin,
   ReleaseTag
 } from '@microsoft/api-extractor-model';
-import { PackageName } from '@microsoft/node-core-library';
 import * as React from 'react';
+import { DOCUMENTATION_TITLE } from '../constants';
 import { BetaWarning } from './BetaWarning';
 import { Breadcrumb } from './Breadcrumb';
 import { Description } from './Description';
@@ -25,10 +25,11 @@ export const Page: React.FC<Props> = ({ apiItem }) => {
     ApiReleaseTagMixin.isBaseClassOf(apiItem) &&
     apiItem.releaseTag === ReleaseTag.Beta;
 
-  const title =
-    apiItem.kind === ApiItemKind.Package
-      ? PackageName.getUnscopedName(apiItem.displayName)
-      : `${apiItem.getScopedNameWithinPackage()} ${apiItem.kind.toLowerCase()}`;
+  const isPackagePage = apiItem.kind === ApiItemKind.Package;
+
+  const title = isPackagePage
+    ? DOCUMENTATION_TITLE
+    : `${apiItem.getScopedNameWithinPackage()} ${apiItem.kind.toLowerCase()}`;
 
   const tsdocComment =
     apiItem instanceof ApiDocumentedItem && apiItem.tsdocComment;
@@ -39,7 +40,7 @@ export const Page: React.FC<Props> = ({ apiItem }) => {
       <Breadcrumb apiItem={apiItem} />
       <Title>{title}</Title>
       {isBeta && <BetaWarning />}
-      {tsdocComment && (
+      {!isPackagePage && tsdocComment && (
         <>
           {tsdocComment.deprecatedBlock && (
             <Warning>This API is now obsolete.</Warning>
