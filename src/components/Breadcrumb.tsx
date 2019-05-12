@@ -19,6 +19,7 @@ export const Breadcrumb: React.FC<Props> = ({ apiItem }) => {
 
   return (
     <>
+      {'\n\n'}
       {hierarchyItems.map((apiItem, index) => (
         <>
           {index > 0 && <LinkSeparator />}

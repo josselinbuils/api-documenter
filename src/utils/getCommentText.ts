@@ -37,6 +37,7 @@ export function nodesToString(
       }
     })
     .join('')
+    .replace(/ {2}/g, ' ')
     .replace(/^\n+|\n+$/g, '');
 
   if (useBrLineBreaks) {

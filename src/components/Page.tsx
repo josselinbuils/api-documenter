@@ -51,6 +51,7 @@ export const Page: React.FC<Props> = ({ apiItem }) => {
         <Signature>{apiItem.getExcerptWithModifiers()}</Signature>
       )}
       <Tables apiItem={apiItem} />
+      {'\n'}
     </>
   );
 };

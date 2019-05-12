@@ -53,7 +53,7 @@ export const Tables: React.FC<Props> = ({ apiItem }) => {
         ['Interface', ApiItemKind.Interface],
         ['Namespace', ApiItemKind.Namespace],
         ['Function', ApiItemKind.Function],
-        ['TypeAlias', ApiItemKind.TypeAlias],
+        ['Type Alias', ApiItemKind.TypeAlias],
         ['Variable', ApiItemKind.Variable]
       ];
 
