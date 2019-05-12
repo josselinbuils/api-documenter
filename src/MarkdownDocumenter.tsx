@@ -7,8 +7,8 @@ import * as unescape from 'lodash.unescape';
 import * as path from 'path';
 import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Page } from './components/Page';
 import { PAGE_ITEM_KINDS } from './constants';
+import { Page } from './pages';
 import { getApiItemFilename } from './utils';
 
 /**

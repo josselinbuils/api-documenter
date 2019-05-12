@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ApiItem } from '@microsoft/api-extractor-model';
-import { getSignature } from '../utils';
+import { getSignature } from '../../utils';
 
 export const Signature: React.FC<Props> = ({ apiItem }) => {
   const signature = getSignature(apiItem);

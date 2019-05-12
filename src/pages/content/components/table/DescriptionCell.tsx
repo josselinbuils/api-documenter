@@ -1,6 +1,6 @@
 import { ApiItem } from '@microsoft/api-extractor-model';
 import * as React from 'react';
-import { getCommentText } from '../../../utils';
+import { getCommentText } from '../../../../utils';
 import { TableCell } from './TableCell';
 
 export const DescriptionCell: React.FC<Props> = ({ apiItem }) => (

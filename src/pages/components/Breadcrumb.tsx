@@ -1,7 +1,7 @@
 import { ApiItem, ApiItemKind } from '@microsoft/api-extractor-model';
 import { PackageName } from '@microsoft/node-core-library';
-import { DOCUMENTATION_TITLE } from '../constants';
-import { getApiItemFilenameLink } from '../utils';
+import { DOCUMENTATION_TITLE } from '../../constants';
+import { getApiItemFilenameLink } from '../../utils';
 import * as React from 'react';
 import { Link } from './Link';
 
@@ -20,7 +20,7 @@ export const Breadcrumb: React.FC<Props> = ({ apiItem }) => {
       {hierarchyItems.map(apiItem =>
         apiItem.kind === ApiItemKind.Package ? (
           <>
-            <Link href="..">
+            <Link href="../..">
               {PackageName.getUnscopedName(apiItem.displayName)}
             </Link>
             <LinkSeparator />

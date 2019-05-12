@@ -1,6 +1,6 @@
 import { ApiEnum } from '@microsoft/api-extractor-model';
 import * as React from 'react';
-import { Title } from '../Title';
+import { Title } from '../../components';
 import {
   ColumnHead,
   DescriptionCell,

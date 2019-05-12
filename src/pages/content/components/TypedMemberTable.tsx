@@ -1,7 +1,7 @@
 import { ApiItem } from '@microsoft/api-extractor-model';
 import * as React from 'react';
-import { getPlural } from '../../utils';
-import { Title } from '../Title';
+import { getPlural } from '../../../utils';
+import { Title } from '../../components';
 import {
   ColumnHead,
   DescriptionCell,
@@ -13,25 +13,22 @@ import {
   TypeCell
 } from './table';
 
-export const PropertyTable: React.FC<Props> = ({
-  propertyItems,
-  propertyType
-}) => {
-  if (propertyItems.length === 0) {
+export const TypedMemberTable: React.FC<Props> = ({ category, items }) => {
+  if (items.length === 0) {
     return null;
   }
 
   return (
     <>
-      <Title>{getPlural(propertyType)}</Title>
+      <Title>{getPlural(category)}</Title>
       <Table>
         <TableHead>
-          <ColumnHead>{propertyType}</ColumnHead>
+          <ColumnHead>{category}</ColumnHead>
           <ColumnHead>Type</ColumnHead>
           <ColumnHead>Description</ColumnHead>
         </TableHead>
         <TableBody>
-          {propertyItems.map(propertyItem => (
+          {items.map(propertyItem => (
             <TableRow>
               <TitleCell apiItem={propertyItem} />
               <TypeCell apiItem={propertyItem} />
@@ -45,6 +42,6 @@ export const PropertyTable: React.FC<Props> = ({
 };
 
 interface Props {
-  propertyType: string;
-  propertyItems: ApiItem[];
+  category: string;
+  items: ApiItem[];
 }
