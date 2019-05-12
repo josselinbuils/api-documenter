@@ -1,4 +1,5 @@
 import {
+  DocCodeSpan,
   DocNode,
   DocNodeKind,
   DocPlainText,
@@ -22,6 +23,9 @@ export function nodesToString(
   let str = nodes
     .map(node => {
       switch (node.kind) {
+        case DocNodeKind.CodeSpan:
+          return `\`${(node as DocCodeSpan).code}\``;
+
         case DocNodeKind.PlainText:
           return (node as DocPlainText).text;
 
