@@ -9,6 +9,7 @@ import {
   TableHead,
   TableRow
 } from './table';
+import { getCommentText } from '../../utils';
 
 export const ParameterTable: React.FC<Props> = ({ apiParameterListMixin }) => {
   if (apiParameterListMixin.parameters.length === 0) {
@@ -30,9 +31,7 @@ export const ParameterTable: React.FC<Props> = ({ apiParameterListMixin }) => {
               <TableCell>{apiParameter.name}</TableCell>
               <TableCell>{apiParameter.parameterTypeExcerpt.text}</TableCell>
               <TableCell>
-                test
-                {/*{apiParameter.tsdocParamBlock &&*/}
-                {/*  apiParameter.tsdocParamBlock.content}*/}
+                {getCommentText(apiParameter.tsdocParamBlock, true)}
               </TableCell>
             </TableRow>
           ))}
