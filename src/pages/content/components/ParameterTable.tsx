@@ -1,5 +1,5 @@
 import { ApiParameterListMixin } from '@microsoft/api-extractor-model';
-import * as React from 'react';
+import React, { FC } from 'react';
 import { Title } from '../../components';
 import {
   ColumnHead,
@@ -11,7 +11,7 @@ import {
 } from './table';
 import { getCommentText } from '../../../utils';
 
-export const ParameterTable: React.FC<Props> = ({ apiParameterListMixin }) => {
+export const ParameterTable: FC<Props> = ({ apiParameterListMixin }) => {
   if (apiParameterListMixin.parameters.length === 0) {
     return null;
   }

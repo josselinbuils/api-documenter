@@ -1,9 +1,9 @@
 import { ApiClass, ApiItemKind } from '@microsoft/api-extractor-model';
-import * as React from 'react';
+import React, { FC } from 'react';
 import { filterApiItems, getEventItems, getPropertyItems } from '../../utils';
 import { MemberTable, TypedMemberTable } from './components';
 
-export const ClassContent: React.FC<Props> = ({ apiClass }) => (
+export const ClassContent: FC<Props> = ({ apiClass }) => (
   <>
     <TypedMemberTable category="Event" items={getEventItems(apiClass)} />
     <TypedMemberTable category="Property" items={getPropertyItems(apiClass)} />

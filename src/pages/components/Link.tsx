@@ -1,7 +1,12 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
-export const Link: React.FC<Props> = ({ children, href }) =>
-  `[${children}](${href})`;
+export const Link: FC<Props> = ({ children, href }) => (
+  <>
+    {'['}
+    {children}
+    {`](${href})`}
+  </>
+);
 
 interface Props {
   href: string;

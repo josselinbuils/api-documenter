@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
-export const ColumnHead: React.FC = ({ children }) => (
+export const ColumnHead: FC = ({ children }) => (
   <>
     {'| '}
     {children}{' '}

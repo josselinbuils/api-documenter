@@ -1,3 +1,4 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
-export const TableBody: React.FC = ({ children }) => children || null;
+export const TableBody: FC = ({ children }) =>
+  children !== undefined ? <>{children}</> : null;

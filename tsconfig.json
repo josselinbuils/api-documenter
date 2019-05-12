@@ -1,21 +1,25 @@
 {
   "compilerOptions": {
-    "outDir": "lib",
-    "rootDirs": ["src"],
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
     "declaration": true,
-    "sourceMap": true,
     "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "inlineSources": true,
-    "experimentalDecorators": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "module": "commonjs",
-    "target": "es6",
+    "jsx": "react",
     "lib": ["esnext"],
+    "module": "commonjs",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "lib",
+    "resolveJsonModule": false,
+    "rootDirs": ["src"],
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6",
     "types": ["jest"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules", "lib"]
+  "exclude": ["node_modules", "lib"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

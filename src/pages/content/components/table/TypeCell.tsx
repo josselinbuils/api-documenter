@@ -1,8 +1,8 @@
 import { ApiItem, ApiPropertyItem } from '@microsoft/api-extractor-model';
-import * as React from 'react';
+import React, { FC } from 'react';
 import { TableCell } from './TableCell';
 
-export const TypeCell: React.FC<Props> = ({ apiItem }) => (
+export const TypeCell: FC<Props> = ({ apiItem }) => (
   <TableCell>
     {apiItem instanceof ApiPropertyItem && apiItem.propertyTypeExcerpt.text}
   </TableCell>

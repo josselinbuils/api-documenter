@@ -1,15 +1,11 @@
-import {
-  ApiItemKind,
-  ApiNamespace,
-  ApiPackage
-} from '@microsoft/api-extractor-model';
-import * as React from 'react';
+import { ApiItem, ApiItemKind } from '@microsoft/api-extractor-model';
+import React, { FC } from 'react';
 import { DOCUMENTATION_TITLE } from '../constants';
 import { filterApiItems, getChildren } from '../utils';
 import { Title } from './components';
 import { MemberTable } from './content/components';
 
-export const NamespacePage: React.FC<Props> = ({ apiItem }) => {
+export const NamespacePage: FC<Props> = ({ apiItem }) => {
   const children = getChildren(apiItem);
 
   const title =
@@ -42,5 +38,5 @@ export const NamespacePage: React.FC<Props> = ({ apiItem }) => {
 };
 
 interface Props {
-  apiItem: ApiNamespace | ApiPackage;
+  apiItem: ApiItem;
 }

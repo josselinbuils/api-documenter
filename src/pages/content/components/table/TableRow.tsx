@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
-export const TableRow: React.FC = ({ children }) => (
+export const TableRow: FC = ({ children }) => (
   <>
     {'\n'}
     {children}

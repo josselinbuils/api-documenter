@@ -1,5 +1,5 @@
 import { ApiEnum } from '@microsoft/api-extractor-model';
-import * as React from 'react';
+import React, { FC } from 'react';
 import { Title } from '../../components';
 import {
   ColumnHead,
@@ -11,7 +11,7 @@ import {
   TableCell
 } from './table';
 
-export const EnumMemberTable: React.FC<Props> = ({ apiEnum }) => (
+export const EnumMemberTable: FC<Props> = ({ apiEnum }) => (
   <>
     <Title>Enumeration Members</Title>
     <Table>

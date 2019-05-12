@@ -1,3 +1,8 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
-export const Warning: React.FC = ({ children }) => `\n\n> Warning: ${children}`;
+export const Warning: FC = ({ children }) => (
+  <>
+    {'\n\n> Warning: '}
+    {children}
+  </>
+);

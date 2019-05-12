@@ -1,9 +1,14 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-export const Table: React.FC = ({ children }) => {
-  const renderedTable = renderToStaticMarkup(children);
-  return `\n\n${makePrettier(renderedTable)}`;
+export const Table: FC = ({ children }) => {
+  const renderedTable = renderToStaticMarkup(<>{children}</>);
+  return (
+    <>
+      {'\n\n'}
+      {makePrettier(renderedTable)}
+    </>
+  );
 };
 
 /**

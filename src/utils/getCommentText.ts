@@ -7,7 +7,7 @@ import {
 } from '@microsoft/tsdoc';
 
 export function getCommentText(
-  comment: DocBlock | DocComment,
+  comment: DocBlock | DocComment | undefined,
   inArray: boolean = false
 ) {
   if (comment === undefined) {

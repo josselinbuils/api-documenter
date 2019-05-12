@@ -1,8 +1,8 @@
 import { ApiEnum } from '@microsoft/api-extractor-model';
-import * as React from 'react';
+import React, { FC } from 'react';
 import { EnumMemberTable } from './components';
 
-export const EnumContent: React.FC<Props> = ({ apiEnum }) => (
+export const EnumContent: FC<Props> = ({ apiEnum }) => (
   <EnumMemberTable apiEnum={apiEnum} />
 );
 

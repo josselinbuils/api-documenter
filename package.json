@@ -9,7 +9,7 @@
   "homepage": "https://github.com/josselinbuils/api-documenter/#readme",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf lib && tsc",
+    "build": "rimraf lib && tsc -p tsconfig.json",
     "test": "jest"
   },
   "bin": {
@@ -17,10 +17,10 @@
   },
   "dependencies": {
     "@microsoft/api-extractor-model": "7.1.0",
-    "@microsoft/node-core-library": "3.13.0",
     "@microsoft/ts-command-line": "4.2.4",
     "@microsoft/tsdoc": "0.12.9",
     "colors": "~1.2.1",
+    "fs-extra": "^8.0.0",
     "lodash.unescape": "^4.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
@@ -28,7 +28,10 @@
   "devDependencies": {
     "@types/jest": "23.3.11",
     "@types/js-yaml": "3.12.1",
+    "@types/lodash.unescape": "^4.0.6",
     "@types/node": "8.5.8",
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.4",
     "jest": "~23.6.0",
     "rimraf": "^2.6.3",
     "typescript": "^3.4.5"

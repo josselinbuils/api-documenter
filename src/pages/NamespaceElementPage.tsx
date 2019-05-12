@@ -6,9 +6,10 @@ import {
   ApiInterface,
   ApiItem,
   ApiItemKind,
+  ApiReleaseTagMixin,
   ReleaseTag
 } from '@microsoft/api-extractor-model';
-import * as React from 'react';
+import React, { FC, ReactNode } from 'react';
 import {
   BetaWarning,
   Description,
@@ -23,8 +24,8 @@ import {
   InterfaceContent
 } from './content';
 
-export const NamespaceElementPage: React.FC<Props> = ({ apiItem }) => {
-  const isBeta = apiItem.releaseTag === ReleaseTag.Beta;
+export const NamespaceElementPage: FC<Props> = ({ apiItem }) => {
+  const isBeta = (apiItem as ApiReleaseTagMixin).releaseTag === ReleaseTag.Beta;
 
   const tsdocComment =
     apiItem instanceof ApiDocumentedItem ? apiItem.tsdocComment : undefined;
@@ -50,7 +51,7 @@ interface Props {
   apiItem: ApiItem;
 }
 
-function getContent(apiItem: ApiItem): React.Element {
+function getContent(apiItem: ApiItem): ReactNode {
   switch (apiItem.kind) {
     case ApiItemKind.Class:
       return <ClassContent apiClass={apiItem as ApiClass} />;

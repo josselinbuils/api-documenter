@@ -1,10 +1,12 @@
-import { ApiItem } from '@microsoft/api-extractor-model';
-import * as React from 'react';
+import { ApiDocumentedItem, ApiItem } from '@microsoft/api-extractor-model';
+import React, { FC } from 'react';
 import { getCommentText } from '../../../../utils';
 import { TableCell } from './TableCell';
 
-export const DescriptionCell: React.FC<Props> = ({ apiItem }) => (
-  <TableCell>{getCommentText(apiItem.tsdocComment, true)}</TableCell>
+export const DescriptionCell: FC<Props> = ({ apiItem }) => (
+  <TableCell>
+    {getCommentText((apiItem as ApiDocumentedItem).tsdocComment, true)}
+  </TableCell>
 );
 
 interface Props {

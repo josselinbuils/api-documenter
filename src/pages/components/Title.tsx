@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
-export const Title: React.FC<Props> = ({ children, level = 1 }) => (
+export const Title: FC<Props> = ({ children, level = 1 }) => (
   <>
     {`\n\n${new Array(level + 1).join('#')} `}
     {children}
@@ -8,5 +8,5 @@ export const Title: React.FC<Props> = ({ children, level = 1 }) => (
 );
 
 interface Props {
-  level: number;
+  level?: number;
 }

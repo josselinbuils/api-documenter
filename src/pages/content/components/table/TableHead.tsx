@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React, { Children, FC } from 'react';
 
-export const TableHead: React.FC = ({ children }) => (
+export const TableHead: FC = ({ children }) => (
   <>
     {children}
     {'|\n'}
-    {React.Children.map(children, () => '| --- ')}
+    {Children.map(children, () => '| --- ')}
     {'|'}
   </>
 );

@@ -1,38 +1,35 @@
 import { ApiItem, ApiItemKind } from '@microsoft/api-extractor-model';
-import { PackageName } from '@microsoft/node-core-library';
 import { DOCUMENTATION_TITLE } from '../../constants';
-import { getApiItemFilenameLink } from '../../utils';
-import * as React from 'react';
+import { getApiItemFilenameLink, getUnscopedName } from '../../utils';
+import React, { FC, Fragment } from 'react';
 import { Link } from './Link';
 
 const excludedItemKinds = [ApiItemKind.Model, ApiItemKind.EntryPoint];
 
-const LinkSeparator = () => ' > ';
+const LinkSeparator = () => <> > </>;
 
-export const Breadcrumb: React.FC<Props> = ({ apiItem }) => {
+export const Breadcrumb: FC<Props> = ({ apiItem }) => {
   const hierarchyItems = apiItem
     .getHierarchy()
     .filter(item => !excludedItemKinds.includes(item.kind));
 
-  const packageItem = hierarchyItems.shift();
+  const packageItem = hierarchyItems.shift() as ApiItem;
 
   return (
     <>
       {'\n\n'}
-      <Link href="..">
-        {PackageName.getUnscopedName(packageItem.displayName)}
-      </Link>
+      <Link href="..">{getUnscopedName(packageItem.displayName)}</Link>
       <LinkSeparator />
       <Link href={getApiItemFilenameLink(packageItem)}>
         {DOCUMENTATION_TITLE}
       </Link>
       {hierarchyItems.map((apiItem, index) => (
-        <React.Fragment key={index}>
+        <Fragment key={index}>
           <LinkSeparator />
           <Link href={getApiItemFilenameLink(apiItem)}>
             {apiItem.displayName}
           </Link>
-        </React.Fragment>
+        </Fragment>
       ))}
     </>
   );

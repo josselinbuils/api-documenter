@@ -1,15 +1,15 @@
 import { ApiItem, ApiModel } from '@microsoft/api-extractor-model';
-import { FileSystem, NewlineKind } from '@microsoft/node-core-library';
-import * as unescape from 'lodash.unescape';
-import * as path from 'path';
-import * as React from 'react';
+import fs from 'fs-extra';
+import unescape from 'lodash.unescape';
+import path from 'path';
+import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { PAGE_ITEM_KINDS } from './constants';
 import { Page } from './pages';
 import { getApiItemFilename } from './utils';
 
 export class MarkdownDocumenter {
-  private outputFolder: string;
+  private outputFolder?: string;
 
   constructor(private readonly apiModel: ApiModel) {}
 
@@ -18,7 +18,7 @@ export class MarkdownDocumenter {
 
     console.log();
     console.log(`Deleting old output from ${outputFolder}`);
-    FileSystem.ensureEmptyFolder(outputFolder);
+    fs.emptyDirSync(outputFolder);
 
     this.writeApiItemPage(this.apiModel.packages[0]);
   }
@@ -26,16 +26,15 @@ export class MarkdownDocumenter {
   private writeApiItemPage = (apiItem: ApiItem): void => {
     if (PAGE_ITEM_KINDS.includes(apiItem.kind)) {
       const filename = path.join(
-        this.outputFolder,
+        this.outputFolder as string,
         getApiItemFilename(apiItem)
       );
+
       const rendered = unescape(
         renderToStaticMarkup(<Page apiItem={apiItem} />)
       ).replace(/ +$/gm, '');
 
-      FileSystem.writeFile(filename, rendered, {
-        convertLineEndings: NewlineKind.Lf
-      });
+      fs.writeFileSync(filename, rendered);
     }
 
     if (apiItem.members !== undefined) {

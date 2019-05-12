@@ -1,5 +1,5 @@
 import { ApiItem } from '@microsoft/api-extractor-model';
-import * as React from 'react';
+import React, { FC } from 'react';
 import { getPlural } from '../../../utils';
 import { Title } from '../../components';
 import {
@@ -13,7 +13,7 @@ import {
   TypeCell
 } from './table';
 
-export const TypedMemberTable: React.FC<Props> = ({ category, items }) => {
+export const TypedMemberTable: FC<Props> = ({ category, items }) => {
   if (items.length === 0) {
     return null;
   }

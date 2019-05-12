@@ -1,15 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 
-import * as path from 'path';
-import * as tsdoc from '@microsoft/tsdoc';
-import * as colors from 'colors';
-
-import {
-  CommandLineAction,
-  CommandLineStringParameter
-} from '@microsoft/ts-command-line';
-import { FileSystem } from '@microsoft/node-core-library';
 import {
   ApiModel,
   ApiItem,
@@ -17,13 +8,21 @@ import {
   ApiDocumentedItem,
   IResolveDeclarationReferenceResult
 } from '@microsoft/api-extractor-model';
+import {
+  CommandLineAction,
+  CommandLineStringParameter
+} from '@microsoft/ts-command-line';
+import tsdoc from '@microsoft/tsdoc';
+import fs from 'fs-extra';
+import path from 'path';
+import colors from 'colors';
 
 export abstract class BaseAction extends CommandLineAction {
-  protected inputFolder: string;
-  protected outputFolder: string;
+  protected inputFolder?: string;
+  protected outputFolder?: string;
 
-  private inputFolderParameter: CommandLineStringParameter;
-  private outputFolderParameter: CommandLineStringParameter;
+  private inputFolderParameter?: CommandLineStringParameter;
+  private outputFolderParameter?: CommandLineStringParameter;
 
   protected onDefineParameters(): void {
     // override
@@ -50,16 +49,20 @@ export abstract class BaseAction extends CommandLineAction {
   protected buildApiModel(): ApiModel {
     const apiModel: ApiModel = new ApiModel();
 
-    this.inputFolder = this.inputFolderParameter.value || './input';
-    if (!FileSystem.exists(this.inputFolder)) {
+    this.inputFolder =
+      (this.inputFolderParameter as CommandLineStringParameter).value ||
+      './input';
+    if (!fs.existsSync(this.inputFolder)) {
       throw new Error('The input folder does not exist: ' + this.inputFolder);
     }
 
     this.outputFolder =
-      this.outputFolderParameter.value || `./${this.actionName}`;
-    FileSystem.ensureFolder(this.outputFolder);
+      (this.outputFolderParameter as CommandLineStringParameter).value ||
+      `./${this.actionName}`;
 
-    for (const filename of FileSystem.readFolder(this.inputFolder)) {
+    fs.ensureDirSync(this.outputFolder);
+
+    for (const filename of fs.readdirSync(this.inputFolder)) {
       if (filename.match(/\.api\.json$/i)) {
         console.log(`Reading ${filename}`);
         const filenamePath: string = path.join(this.inputFolder, filename);
