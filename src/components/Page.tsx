@@ -25,7 +25,7 @@ export const Page: React.FC<Props> = ({ apiItem }) => {
 
   const title = isPackagePage
     ? DOCUMENTATION_TITLE
-    : `${apiItem.getScopedNameWithinPackage()} ${apiItem.kind.toLowerCase()}`;
+    : apiItem.getScopedNameWithinPackage();
 
   const tsdocComment =
     apiItem instanceof ApiDocumentedItem && apiItem.tsdocComment;
