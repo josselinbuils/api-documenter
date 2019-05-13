@@ -2,9 +2,9 @@ import { ApiDeclaredItem, ApiItem } from '@microsoft/api-extractor-model';
 
 const unwantedKeywords = ['declare', 'export'];
 
-export function getSignature(apiItem: ApiItem): string {
+export function getSignature(apiItem: ApiItem): string | undefined {
   if (!(apiItem instanceof ApiDeclaredItem)) {
-    return '';
+    return undefined;
   }
   return unwantedKeywords
     .reduce(

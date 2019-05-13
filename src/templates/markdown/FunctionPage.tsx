@@ -4,7 +4,7 @@ import {
   ApiParameterListMixin
 } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import { getCommentText, getType } from '../utils';
+import { getType } from '../utils';
 import {
   Description,
   Examples,
@@ -14,6 +14,7 @@ import {
   Title,
   Warnings
 } from './components';
+import { CommentContent } from './components/CommentContent';
 
 export const FunctionPage: FC<Props> = ({ apiFunction }) => {
   const returnType = getType(apiFunction);
@@ -31,7 +32,13 @@ export const FunctionPage: FC<Props> = ({ apiFunction }) => {
       />
       <Title level={2}>Returns</Title>
       {returnType && `\n\`${getType(apiFunction)}\`\n`}
-      {returnsBlock && `\n${getCommentText(returnsBlock.content)}\n`}
+      {returnsBlock && (
+        <>
+          {'\n'}
+          <CommentContent docSection={returnsBlock.content} />
+          {'\n'}
+        </>
+      )}
       <Examples apiItem={apiFunction} />
     </>
   );

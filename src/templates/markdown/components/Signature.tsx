@@ -4,7 +4,12 @@ import { getSignature } from '../../utils';
 
 export const Signature: FC<Props> = ({ apiItem }) => {
   const signature = getSignature(apiItem);
-  return signature ? <>{`\n\`\`\`typescript\n${signature}\n\`\`\`\n`}</> : null;
+
+  if (signature === undefined) {
+    return null;
+  }
+
+  return <>{`\n\`\`\`typescript\n${signature}\n\`\`\`\n`}</>;
 };
 
 interface Props {

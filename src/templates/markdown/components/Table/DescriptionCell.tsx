@@ -1,6 +1,6 @@
 import { ApiDocumentedItem, ApiItem } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import { getCommentText } from '../../../utils';
+import { CommentContent } from '../CommentContent';
 import { TableCell } from './TableCell';
 
 export const DescriptionCell: FC<Props> = ({ apiItem }) => {
@@ -8,9 +8,12 @@ export const DescriptionCell: FC<Props> = ({ apiItem }) => {
 
   return (
     <TableCell>
-      {tsdocComment !== undefined
-        ? getCommentText(tsdocComment.summarySection, true)
-        : ''}
+      {tsdocComment && (
+        <CommentContent
+          docSection={tsdocComment.summarySection}
+          inArray={true}
+        />
+      )}
     </TableCell>
   );
 };

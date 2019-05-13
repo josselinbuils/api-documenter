@@ -1,17 +1,21 @@
 import { ApiDocumentedItem, ApiItem } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import { getCommentText } from '../../utils';
+import { CommentContent } from './CommentContent';
 
 export const Description: FC<Props> = ({ apiItem }) => {
   const tsdocComment = (apiItem as ApiDocumentedItem).tsdocComment;
 
-  return tsdocComment !== undefined ? (
+  if (tsdocComment === undefined) {
+    return null;
+  }
+
+  return (
     <>
       {'\n'}
-      {getCommentText(tsdocComment.summarySection)}
+      <CommentContent docSection={tsdocComment.summarySection} />
       {'\n'}
     </>
-  ) : null;
+  );
 };
 
 interface Props {
