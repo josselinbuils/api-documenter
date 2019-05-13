@@ -11,13 +11,14 @@ export const Breadcrumb: FC<Props> = ({ apiItem }) => {
     .getHierarchy()
     .filter(item => !excludedItemKinds.includes(item.kind));
 
+  const apiPackage = hierarchyItems[0];
+  const lastItem = hierarchyItems.pop() as ApiItem;
+
   // noinspection HtmlUnknownTarget
   return (
     <>
       {'\n'}
-      <Link href="../README.md">
-        {getUnscopedName(hierarchyItems[0].displayName)}
-      </Link>
+      <Link href="../README.md">{getUnscopedName(apiPackage.displayName)}</Link>
       {hierarchyItems.map((hierarchyItem, index) => (
         <Fragment key={index}>
           {' > '}
@@ -26,6 +27,8 @@ export const Breadcrumb: FC<Props> = ({ apiItem }) => {
           </Link>
         </Fragment>
       ))}
+      {' > '}
+      {getApiItemTitle(lastItem)}
       {'\n'}
     </>
   );
