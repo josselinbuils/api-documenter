@@ -1,7 +1,7 @@
 import { ApiItem, ApiItemKind } from '@microsoft/api-extractor-model';
-import { DOCUMENTATION_TITLE } from '../../constants';
-import { getApiItemFilenameLink, getUnscopedName } from '../../utils';
 import React, { FC, Fragment } from 'react';
+import { DOCUMENTATION_TITLE } from '../../constants';
+import { getApiItemFilenameLink, getUnscopedName } from '../utils';
 import { Link } from './Link';
 
 const excludedItemKinds = [ApiItemKind.Model, ApiItemKind.EntryPoint];
@@ -15,6 +15,7 @@ export const Breadcrumb: FC<Props> = ({ apiItem }) => {
 
   const packageItem = hierarchyItems.shift() as ApiItem;
 
+  // noinspection HtmlUnknownTarget
   return (
     <>
       {'\n\n'}

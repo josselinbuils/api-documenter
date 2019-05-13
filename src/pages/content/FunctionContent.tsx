@@ -6,7 +6,8 @@ import {
 import React, { FC } from 'react';
 import { ParameterTable } from './components';
 import { Title } from '../components';
-import { getCommentText, getType } from '../../utils';
+import { getCommentText } from '../utils';
+import { getType } from './utils';
 
 export const FunctionContent: FC<Props> = ({ apiFunction }) => {
   const returnType = getType(apiFunction);

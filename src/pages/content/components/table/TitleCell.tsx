@@ -1,8 +1,8 @@
 import { ApiItem } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
 import { PAGE_ITEM_KINDS } from '../../../../constants';
-import { getApiItemFilenameLink } from '../../../../utils';
 import { Link } from '../../../components';
+import { getApiItemFilenameLink } from '../../../utils';
 import { TableCell } from './TableCell';
 
 export const TitleCell: FC<Props> = ({ apiItem }) => (

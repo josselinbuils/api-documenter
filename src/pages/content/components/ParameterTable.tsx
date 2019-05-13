@@ -1,6 +1,7 @@
 import { ApiParameterListMixin } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
 import { Title } from '../../components';
+import { getParameterDescription } from '../utils';
 import {
   ColumnHead,
   Table,
@@ -10,7 +11,6 @@ import {
   TableRow,
   TypeCell
 } from './table';
-import { getParameterDescription } from '../../../utils';
 
 export const ParameterTable: FC<Props> = ({ apiParameterListMixin }) => {
   if (apiParameterListMixin.parameters.length === 0) {
