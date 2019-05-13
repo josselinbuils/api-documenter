@@ -1,7 +1,7 @@
 import { ApiDocumentedItem, ApiItem } from '@microsoft/api-extractor-model';
 import { StandardTags } from '@microsoft/tsdoc';
 import React, { FC, Fragment } from 'react';
-import { nodesToMarkdown } from '../utils';
+import { nodesToMarkdown } from '../../utils';
 import { Title } from './Title';
 
 export const Examples: FC<Props> = ({ apiItem }) => {

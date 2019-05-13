@@ -1,7 +1,7 @@
 import { ApiParameterListMixin } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
+import { getParameterDescription } from '../../../utils';
 import { Title } from '../../components';
-import { getParameterDescription } from '../utils';
 import {
   ColumnHead,
   Table,

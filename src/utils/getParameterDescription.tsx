@@ -1,5 +1,5 @@
 import { Parameter } from '@microsoft/api-extractor-model';
-import { getCommentText } from '../../utils';
+import { getCommentText } from './getCommentText';
 
 export function getParameterDescription(parameter: Parameter): string {
   return parameter.tsdocParamBlock !== undefined

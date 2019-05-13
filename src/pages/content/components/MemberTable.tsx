@@ -1,7 +1,7 @@
 import { ApiItem } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
+import { getPlural } from '../../../utils';
 import { Title } from '../../components';
-import { getPlural } from '../utils';
 import {
   ColumnHead,
   DescriptionCell,
