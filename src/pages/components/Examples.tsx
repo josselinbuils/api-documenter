@@ -31,28 +31,3 @@ export const Examples: FC<Props> = ({ apiItem }) => {
 interface Props {
   apiItem: ApiItem | ApiDocumentedItem;
 }
-
-/*
-if (tsdocComment) {
-        // Write the @remarks block
-        if (tsdocComment.remarksBlock) {
-          output.appendNode(new DocHeading({ configuration: this._tsdocConfiguration, title: 'Remarks' }));
-          this._appendSection(output, tsdocComment.remarksBlock.content);
-        }
-
-        // Write the @example blocks
-        const exampleBlocks: DocBlock[] = tsdocComment.customBlocks.filter(x => x.blockTag.tagNameWithUpperCase
-          === StandardTags.example.tagNameWithUpperCase);
-
-        let exampleNumber: number = 1;
-        for (const exampleBlock of exampleBlocks) {
-          const heading: string = exampleBlocks.length > 1 ? `Example ${exampleNumber}` : 'Example';
-
-          output.appendNode(new DocHeading({ configuration: this._tsdocConfiguration, title: heading }));
-
-          this._appendSection(output, exampleBlock.content);
-
-          ++exampleNumber;
-        }
-      }
- */

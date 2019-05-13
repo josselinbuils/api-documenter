@@ -28,7 +28,7 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@josselinbuils/tslint": "^1.0.0",
+    "@josselinbuils/tslint": "^2.0.0",
     "@types/he": "^1.1.0",
     "@types/jest": "23.3.11",
     "@types/js-yaml": "3.12.1",

@@ -18,10 +18,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@josselinbuils/tslint@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@josselinbuils/tslint/-/tslint-1.0.0.tgz#ca3a29d3995bef9b799f69cf7bd57c8b920e7700"
-  integrity sha512-kwAg2Zuj7K4vBPoZXtoA1IyNEjNAol38fUGFUmGMURZN305+m5wZ6mMkmdu82fgJ6i6xcH+4/13pmKizoeUeLQ==
+"@josselinbuils/tslint@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@josselinbuils/tslint/-/tslint-2.0.0.tgz#c6c8672d13fc4ccb2834fb3ac7410c7571b1b911"
+  integrity sha512-jA+IEXuX+fH9SdrU/Pg5fwkywrVG6nY7a3Ud44o9G9+XVY+UOVq5JkCjWgpfy0i15NiPLv0SRctz3OutxoktUA==
 
 "@microsoft/api-extractor-model@7.1.0":
   version "7.1.0"
