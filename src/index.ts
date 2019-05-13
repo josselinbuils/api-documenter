@@ -1,11 +1,11 @@
+import { ApiModel } from '@microsoft/api-extractor-model';
 import childProcess from 'child_process';
 import colors from 'colors';
 import program from 'commander';
 import fs from 'fs-extra';
 import path from 'path';
-import { applyInheritDoc, writeApiItemPage } from './utils';
-import { ApiModel } from '@microsoft/api-extractor-model';
 import { API_EXTRACTOR_BASE_CONFIG } from './constants';
+import { applyInheritDoc, writeApiItemPage } from './utils';
 
 const version = require(path.join(__dirname, '../package')).version;
 
@@ -60,7 +60,7 @@ childProcess.execSync(
 
 // Builds API model
 
-console.log(`Builds API model`);
+console.log('Builds API model');
 
 const apiModel = new ApiModel();
 apiModel.loadPackage(apiJsonFilePath);

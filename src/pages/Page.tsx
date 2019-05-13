@@ -1,8 +1,8 @@
 import { ApiItem, ApiItemKind } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
 import { Breadcrumb } from './components';
-import { NamespacePage } from './NamespacePage';
 import { NamespaceElementPage } from './NamespaceElementPage';
+import { NamespacePage } from './NamespacePage';
 
 const namespaceKinds = [ApiItemKind.Namespace, ApiItemKind.Package];
 

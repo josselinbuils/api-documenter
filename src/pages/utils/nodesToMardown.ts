@@ -11,7 +11,7 @@ import {
 export function nodesToMarkdown(
   nodes: readonly DocNode[],
   useBrLineBreaks: boolean = false
-) {
+): string {
   let str = nodes
     .map(node => {
       switch (node.kind) {

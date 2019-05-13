@@ -1,0 +1,10 @@
+{
+  "extends": "@josselinbuils/tslint",
+  "rules": {
+    "ordered-imports": [true, { "grouped-imports": false }],
+    "quotemark": [true, "single", "jsx-double"],
+    "strict-boolean-expressions": false,
+    "trailing-comma": false,
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
+  }
+}

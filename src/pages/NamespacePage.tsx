@@ -1,9 +1,9 @@
 import { ApiItem, ApiItemKind } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
 import { DOCUMENTATION_TITLE } from '../constants';
-import { filterApiItems, getChildren } from './utils';
 import { Title } from './components';
 import { MemberTable } from './content/components';
+import { filterApiItems, getChildren } from './utils';
 
 export const NamespacePage: FC<Props> = ({ apiItem }) => {
   const children = getChildren(apiItem);

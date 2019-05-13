@@ -28,7 +28,7 @@ export function applyInheritDoc(apiItem: ApiItem, apiModel: ApiModel): void {
             colors.yellow(
               `Warning: Unresolved @inheritDoc tag for ${
                 apiItem.displayName
-              }: ` + result.errorMessage
+              }: ${result.errorMessage}`
             )
           );
         } else {

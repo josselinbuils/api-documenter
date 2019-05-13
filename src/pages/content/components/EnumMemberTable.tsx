@@ -6,9 +6,9 @@ import {
   DescriptionCell,
   Table,
   TableBody,
+  TableCell,
   TableHead,
   TableRow,
-  TableCell,
   TypeCell
 } from './table';
 

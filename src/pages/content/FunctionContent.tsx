@@ -4,9 +4,9 @@ import {
   ApiParameterListMixin
 } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import { ParameterTable } from './components';
 import { Title } from '../components';
 import { getCommentText } from '../utils';
+import { ParameterTable } from './components';
 import { getType } from './utils';
 
 export const FunctionContent: FC<Props> = ({ apiFunction }) => {

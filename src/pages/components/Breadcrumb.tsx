@@ -26,11 +26,11 @@ export const Breadcrumb: FC<Props> = ({ apiItem }) => {
       <Link href={getApiItemFilenameLink(packageItem)}>
         {DOCUMENTATION_TITLE}
       </Link>
-      {hierarchyItems.map((apiItem, index) => (
+      {hierarchyItems.map((hierarchyItem, index) => (
         <Fragment key={index}>
           <LinkSeparator />
-          <Link href={getApiItemFilenameLink(apiItem)}>
-            {apiItem.displayName}
+          <Link href={getApiItemFilenameLink(hierarchyItem)}>
+            {hierarchyItem.displayName}
           </Link>
         </Fragment>
       ))}

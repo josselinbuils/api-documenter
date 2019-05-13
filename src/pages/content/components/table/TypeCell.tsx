@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { TableCell } from './TableCell';
 import { getType } from '../../utils';
+import { TableCell } from './TableCell';
 
 export const TypeCell: FC<Props> = ({ input }) => {
   const type = getType(input);
