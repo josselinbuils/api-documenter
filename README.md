@@ -1,6 +1,6 @@
 # api-documenter
 
-Markdown documentation generator based on
+Markdown documentation generator for typescript based on
 [@microsoft/api-documenter](https://github.com/microsoft/web-build-tools/tree/master/apps/api-documenter).
 
 [Example](https://github.com/josselinbuils/utils/tree/master/doc)
