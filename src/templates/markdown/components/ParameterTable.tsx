@@ -12,14 +12,17 @@ import {
 } from './Table';
 import { Title } from './Title';
 
-export const ParameterTable: FC<Props> = ({ apiParameterListMixin }) => {
+export const ParameterTable: FC<Props> = ({
+  apiParameterListMixin,
+  noTitle = false
+}) => {
   if (apiParameterListMixin.parameters.length === 0) {
     return null;
   }
 
   return (
     <>
-      <Title level={2}>Parameters</Title>
+      {!noTitle && <Title level={2}>Parameters</Title>}
       <Table>
         <TableHead>
           <ColumnHead>Parameter</ColumnHead>
@@ -49,4 +52,5 @@ export const ParameterTable: FC<Props> = ({ apiParameterListMixin }) => {
 
 interface Props {
   apiParameterListMixin: ApiParameterListMixin;
+  noTitle?: boolean;
 }

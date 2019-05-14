@@ -2,6 +2,7 @@ import { ApiClass, ApiItemKind } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
 import { filterApiItems, getEventItems, getPropertyItems } from '../utils';
 import {
+  Constructor,
   Description,
   Examples,
   MemberTable,
@@ -17,6 +18,7 @@ export const ClassPage: FC<Props> = ({ apiClass }) => (
     <Warnings apiItem={apiClass} />
     <Description apiItem={apiClass} />
     <Signature apiItem={apiClass} />
+    <Constructor apiClass={apiClass} />
     <TypedMemberTable category="Event" items={getEventItems(apiClass)} />
     <TypedMemberTable category="Property" items={getPropertyItems(apiClass)} />
     <MemberTable

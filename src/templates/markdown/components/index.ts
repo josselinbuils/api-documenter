@@ -1,4 +1,5 @@
 export * from './Breadcrumb';
+export * from './Constructor';
 export * from './Description';
 export * from './EnumMemberTable';
 export * from './Examples';

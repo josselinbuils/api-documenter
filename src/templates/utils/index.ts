@@ -2,6 +2,7 @@ export * from './filterApiItems';
 export * from './getApiItemFilename';
 export * from './getApiItemTitle';
 export * from './getChildren';
+export * from './getConstrucor';
 export * from './getEventItems';
 export * from './getPlural';
 export * from './getPropertyItems';
