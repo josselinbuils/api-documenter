@@ -1,4 +1,6 @@
 export * from './Breadcrumb';
+export * from './CodeBlock';
+export * from './CodeSpan';
 export * from './Constructor';
 export * from './Description';
 export * from './EnumMemberTable';

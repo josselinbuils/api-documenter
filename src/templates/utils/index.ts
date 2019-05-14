@@ -9,4 +9,3 @@ export * from './getPropertyItems';
 export * from './getSignature';
 export * from './getType';
 export * from './getUnscopedName';
-export * from './trim';
