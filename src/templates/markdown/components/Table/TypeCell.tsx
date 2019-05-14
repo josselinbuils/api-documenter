@@ -3,7 +3,12 @@ import { getType } from '../../../utils';
 import { TableCell } from './TableCell';
 
 export const TypeCell: FC<Props> = ({ input }) => {
-  const type = getType(input);
+  const type = getType(input)
+    // Replaces | by ǀ to avoid breaking arrays
+    .replace(/\|/g, 'ǀ')
+    // Uses non-breaking spaces
+    .replace(/ /g, '\u00A0');
+
   return <TableCell>{type && `\`${type}\``}</TableCell>;
 };
 
