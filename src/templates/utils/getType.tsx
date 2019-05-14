@@ -6,7 +6,7 @@ import {
   Parameter
 } from '@microsoft/api-extractor-model';
 
-export function getType(input: any): string {
+export function getType(input: any): string | undefined {
   const excerpt =
     (input as ApiEnumMember).initializerExcerpt ||
     (input as ApiPropertyItem).propertyTypeExcerpt ||
@@ -14,5 +14,5 @@ export function getType(input: any): string {
     (input as ApiVariable).variableTypeExcerpt ||
     (input as Parameter).parameterTypeExcerpt;
 
-  return excerpt !== undefined ? excerpt.text : '';
+  return excerpt !== undefined ? excerpt.text : undefined;
 }

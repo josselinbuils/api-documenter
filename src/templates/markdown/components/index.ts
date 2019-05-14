@@ -7,6 +7,7 @@ export * from './Link';
 export * from './MemberTable';
 export * from './PageHeader';
 export * from './ParameterTable';
+export * from './Returns';
 export * from './Signature';
 export * from './Title';
 export * from './TypedMemberTable';
