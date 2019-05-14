@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { filterApiItems, getEventItems, getPropertyItems } from '../utils';
 import {
   Description,
+  Examples,
   MemberTable,
   PageHeader,
   Signature,
@@ -22,6 +23,7 @@ export const ClassPage: FC<Props> = ({ apiClass }) => (
       category="Method"
       items={filterApiItems(apiClass.members, ApiItemKind.Method)}
     />
+    <Examples apiItem={apiClass} />
   </>
 );
 
