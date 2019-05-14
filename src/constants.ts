@@ -16,19 +16,9 @@ export const API_EXTRACTOR_BASE_CONFIG = {
     enabled: false
   },
   messages: {
-    compilerMessageReporting: {
-      default: {
-        logLevel: 'warning'
-      }
-    },
     extractorMessageReporting: {
       default: {
-        logLevel: 'warning'
-      }
-    },
-    tsdocMessageReporting: {
-      default: {
-        logLevel: 'warning'
+        logLevel: 'none'
       }
     }
   }
