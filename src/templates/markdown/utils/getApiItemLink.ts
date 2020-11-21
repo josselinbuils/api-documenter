@@ -1,6 +1,6 @@
 import { ApiItem } from '@microsoft/api-extractor-model';
-import { MarkdownPage } from '../MarkdownPage';
+import { getFileName } from './getFileName';
 
 export function getApiItemLink(apiItem: ApiItem): string {
-  return `./${MarkdownPage.getFilename(apiItem)}`;
+  return `./${getFileName(apiItem)}`;
 }

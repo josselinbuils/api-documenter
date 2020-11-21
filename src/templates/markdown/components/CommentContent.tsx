@@ -1,6 +1,6 @@
 import { DocSection } from '@microsoft/tsdoc';
 import { FC } from 'react';
-import { nodesToMarkdown } from '../utils';
+import { nodesToMarkdown } from '../utils/nodesToMarkdown';
 
 export const CommentContent: FC<Props> = ({ docSection, inArray = false }) => {
   if (docSection === undefined) {

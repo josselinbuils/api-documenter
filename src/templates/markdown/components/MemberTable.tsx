@@ -1,15 +1,13 @@
 import { ApiItem } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import { getPlural } from '../../utils';
-import {
-  ColumnHead,
-  DescriptionCell,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TitleCell
-} from './Table';
+import { getPlural } from '../../utils/getPlural';
+import { ColumnHead } from './Table/ColumnHead';
+import { DescriptionCell } from './Table/DescriptionCell';
+import { Table } from './Table/Table';
+import { TableBody } from './Table/TableBody';
+import { TableHead } from './Table/TableHead';
+import { TableRow } from './Table/TableRow';
+import { TitleCell } from './Table/TitleCell';
 import { Title } from './Title';
 
 export const MemberTable: FC<Props> = ({ category, items }) => {

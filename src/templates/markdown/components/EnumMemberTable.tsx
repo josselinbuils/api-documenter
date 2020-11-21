@@ -1,15 +1,13 @@
 import { ApiEnum } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import {
-  ColumnHead,
-  DescriptionCell,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TypeCell
-} from './Table';
+import { ColumnHead } from './Table/ColumnHead';
+import { DescriptionCell } from './Table/DescriptionCell';
+import { Table } from './Table/Table';
+import { TableBody } from './Table/TableBody';
+import { TableCell } from './Table/TableCell';
+import { TableHead } from './Table/TableHead';
+import { TableRow } from './Table/TableRow';
+import { TypeCell } from './Table/TypeCell';
 import { Title } from './Title';
 
 export const EnumMemberTable: FC<Props> = ({ apiEnum }) => (

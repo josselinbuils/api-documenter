@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { getType } from '../../../utils';
+import { getType } from '../../../utils/getType';
 import { TableCell } from './TableCell';
 
 export const TypeCell: FC<Props> = ({ input }) => {

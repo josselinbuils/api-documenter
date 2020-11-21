@@ -5,7 +5,7 @@ import path from 'path';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { PAGE_ITEM_KINDS } from '../../constants';
-import { MarkdownPage } from '../../templates/markdown';
+import { MarkdownPage } from '../../templates/markdown/MarkdownPage';
 
 export function writeApiItemPage(outputPath: string, apiItem: ApiItem): void {
   if (PAGE_ITEM_KINDS.includes(apiItem.kind)) {

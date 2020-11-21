@@ -4,15 +4,12 @@ import { CommentContent } from '../CommentContent';
 import { TableCell } from './TableCell';
 
 export const DescriptionCell: FC<Props> = ({ apiItem }) => {
-  const tsdocComment = (apiItem as ApiDocumentedItem).tsdocComment;
+  const { tsdocComment } = apiItem as ApiDocumentedItem;
 
   return (
     <TableCell>
       {tsdocComment && (
-        <CommentContent
-          docSection={tsdocComment.summarySection}
-          inArray={true}
-        />
+        <CommentContent docSection={tsdocComment.summarySection} inArray />
       )}
     </TableCell>
   );

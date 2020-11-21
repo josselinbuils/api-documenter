@@ -1,6 +1,6 @@
 import { ApiClass } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import { getConstructor } from '../../utils';
+import { getConstructor } from '../../utils/getConstrucor';
 import { ParameterTable } from './ParameterTable';
 import { Signature } from './Signature';
 import { Title } from './Title';

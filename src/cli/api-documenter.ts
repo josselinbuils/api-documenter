@@ -5,9 +5,11 @@ import program from 'commander';
 import fs from 'fs-extra';
 import path from 'path';
 import { API_EXTRACTOR_BASE_CONFIG } from '../constants';
-import { applyInheritDoc, writeApiItemPage } from './utils';
+import { applyInheritDoc } from './utils/applyInheritDoc';
+import { writeApiItemPage } from './utils/writeApiItemPage';
 
-const version = require(path.join(__dirname, '../../package')).version;
+// eslint-disable-next-line @typescript-eslint/no-var-requires,import/no-dynamic-require
+const { version } = require(path.join(__dirname, '../../package'));
 
 program
   .version(version)

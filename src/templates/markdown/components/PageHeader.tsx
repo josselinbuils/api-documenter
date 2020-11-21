@@ -1,6 +1,6 @@
 import { ApiItem } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import { getApiItemTitle } from '../../utils';
+import { getApiItemTitle } from '../../utils/getApiItemTitle';
 import { Breadcrumb } from './Breadcrumb';
 import { Title } from './Title';
 

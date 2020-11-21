@@ -46,13 +46,12 @@ function getColumnLengths(renderedTable: string): number[] {
     line
       .split('|')
       .slice(1, -1)
-      .forEach(
-        (column, index) =>
-          (columnLengths[index] = Math.max(
-            column.length,
-            columnLengths[index] || 0
-          ))
-      )
+      .forEach((column, index) => {
+        columnLengths[index] = Math.max(
+          column.length,
+          columnLengths[index] || 0
+        );
+      })
   );
 
   return columnLengths;

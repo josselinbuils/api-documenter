@@ -13,7 +13,9 @@ import {
   DocPlainText
 } from '@microsoft/tsdoc';
 import React, { Fragment, ReactElement } from 'react';
-import { CodeBlock, CodeSpan, Link } from '../components';
+import { CodeBlock } from '../components/CodeBlock';
+import { CodeSpan } from '../components/CodeSpan';
+import { Link } from '../components/Link';
 
 export function nodesToMarkdown(
   nodes: readonly DocNode[],
@@ -45,19 +47,20 @@ function nodeToMarkdown(
     case DocNodeKind.ErrorText:
       return removeConsecutiveSpaces((node as DocErrorText).text);
 
-    case DocNodeKind.FencedCode:
+    case DocNodeKind.FencedCode: {
       const fencedCode = node as DocFencedCode;
       return (
         <CodeBlock language={fencedCode.language}>
           {trim(fencedCode.code)}
         </CodeBlock>
       );
+    }
 
     case DocNodeKind.HtmlStartTag:
     case DocNodeKind.HtmlEndTag:
       return (node as DocHtmlStartTag | DocHtmlEndTag).emitAsHtml();
 
-    case DocNodeKind.LinkTag:
+    case DocNodeKind.LinkTag: {
       const { linkText, urlDestination } = node as DocLinkTag;
       const trimmedLinkText = removeConsecutiveSpaces(linkText || '');
 
@@ -66,11 +69,12 @@ function nodeToMarkdown(
       ) : (
         <>{trimmedLinkText}</>
       );
+    }
 
-    case DocNodeKind.Paragraph:
-      const nodes = DocNodeTransforms.trimSpacesInParagraph(
+    case DocNodeKind.Paragraph: {
+      const { nodes } = DocNodeTransforms.trimSpacesInParagraph(
         node as DocParagraph
-      ).nodes;
+      );
 
       return inArray && previousSibling instanceof DocParagraph ? (
         <>
@@ -81,6 +85,7 @@ function nodeToMarkdown(
       ) : (
         nodesToMarkdown(nodes, inArray)
       );
+    }
 
     case DocNodeKind.PlainText:
       return removeConsecutiveSpaces((node as DocPlainText).text);

@@ -4,19 +4,14 @@
   "description": "Markdown documentation generator for typescript.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/josselinbuils/api-documenter"
+    "url": "https://github.com/josselinbuils/api-documenter.git"
   },
-  "homepage": "https://github.com/josselinbuils/api-documenter/#readme",
+  "homepage": "https://github.com/josselinbuils/api-documenter",
   "license": "MIT",
   "scripts": {
     "build": "rimraf lib && tsc -p tsconfig.json",
-    "lint": "tslint -p tsconfig.json --fix",
+    "lint": "eslint .",
     "test": "jest"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && pretty-quick --staged --pattern \"**/*.(ts|tsx)\""
-    }
   },
   "bin": {
     "api-documenter": "./bin/api-documenter"
@@ -33,21 +28,18 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@josselinbuils/tslint": "^2.0.0",
+    "@josselinbuils/eslint-config-react": "^0.1.0",
+    "@josselinbuils/exec-staged": "^1.0.2",
     "@types/he": "^1.1.0",
     "@types/jest": "^24.0.13",
     "@types/node": "^12.0.1",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
+    "eslint": "^7.14.0",
     "husky": "^2.3.0",
     "jest": "^24.8.0",
     "prettier": "^1.17.1",
-    "pretty-quick": "^1.10.0",
     "rimraf": "^2.6.3",
-    "tslint": "^5.16.0",
     "typescript": "^3.4.5"
-  },
-  "prettier": {
-    "singleQuote": true
   }
 }

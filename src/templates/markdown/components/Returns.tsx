@@ -1,6 +1,6 @@
 import { ApiFunction } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import { getType } from '../../utils';
+import { getType } from '../../utils/getType';
 import { CommentContent } from './CommentContent';
 
 export const Returns: FC<Props> = ({ apiFunction }) => {

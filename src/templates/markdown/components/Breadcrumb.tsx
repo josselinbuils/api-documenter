@@ -1,7 +1,8 @@
 import { ApiItem, ApiItemKind } from '@microsoft/api-extractor-model';
 import React, { FC, Fragment } from 'react';
-import { getApiItemTitle, getUnscopedName } from '../../utils';
-import { getApiItemLink } from '../utils';
+import { getApiItemTitle } from '../../utils/getApiItemTitle';
+import { getUnscopedName } from '../../utils/getUnscopedName';
+import { getApiItemLink } from '../utils/getApiItemLink';
 import { Link } from './Link';
 
 const excludedItemKinds = [ApiItemKind.Model, ApiItemKind.EntryPoint];

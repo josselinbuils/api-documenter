@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { CommentContent } from './CommentContent';
 
 export const Description: FC<Props> = ({ apiItem }) => {
-  const tsdocComment = (apiItem as ApiDocumentedItem).tsdocComment;
+  const { tsdocComment } = apiItem as ApiDocumentedItem;
 
   if (tsdocComment === undefined) {
     return null;

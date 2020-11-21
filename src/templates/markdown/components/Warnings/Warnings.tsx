@@ -9,7 +9,7 @@ import { Warning } from './Warning';
 
 export const Warnings: FC<Props> = ({ apiItem }) => {
   const isBeta = (apiItem as ApiReleaseTagMixin).releaseTag === ReleaseTag.Beta;
-  const tsdocComment = (apiItem as ApiDocumentedItem).tsdocComment;
+  const { tsdocComment } = apiItem as ApiDocumentedItem;
   const isDeprecated =
     tsdocComment !== undefined && tsdocComment.deprecatedBlock !== undefined;
 

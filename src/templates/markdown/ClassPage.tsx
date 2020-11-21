@@ -1,16 +1,16 @@
 import { ApiClass, ApiItemKind } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import { filterApiItems, getEventItems, getPropertyItems } from '../utils';
-import {
-  Constructor,
-  Description,
-  Examples,
-  MemberTable,
-  PageHeader,
-  Signature,
-  TypedMemberTable,
-  Warnings
-} from './components';
+import { filterApiItems } from '../utils/filterApiItems';
+import { getEventItems } from '../utils/getEventItems';
+import { getPropertyItems } from '../utils/getPropertyItems';
+import { Constructor } from './components/Constructor';
+import { Description } from './components/Description';
+import { Examples } from './components/Examples';
+import { MemberTable } from './components/MemberTable';
+import { PageHeader } from './components/PageHeader';
+import { Signature } from './components/Signature';
+import { TypedMemberTable } from './components/TypedMemberTable';
+import { Warnings } from './components/Warnings/Warnings';
 
 export const ClassPage: FC<Props> = ({ apiClass }) => (
   <>

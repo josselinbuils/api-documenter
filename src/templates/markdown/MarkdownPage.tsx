@@ -8,12 +8,12 @@ import {
 } from '@microsoft/api-extractor-model';
 import React from 'react';
 import { Template } from '../../cli/Template';
-import { getApiItemFilename } from '../utils';
 import { ClassPage } from './ClassPage';
 import { EnumPage } from './EnumPage';
 import { FunctionPage } from './FunctionPage';
 import { InterfacePage } from './InterfacePage';
 import { PackageOrNamespacePage } from './PackageOrNamespacePage';
+import { getFileName } from './utils/getFileName';
 
 export const MarkdownPage: Template<Props> = ({ apiItem }) => {
   switch (apiItem.kind) {
@@ -40,11 +40,7 @@ export const MarkdownPage: Template<Props> = ({ apiItem }) => {
   }
 };
 
-MarkdownPage.getFilename = (apiItem: ApiItem) => {
-  return apiItem.kind === ApiItemKind.Package
-    ? 'README.md'
-    : `${getApiItemFilename(apiItem)}.md`;
-};
+MarkdownPage.getFilename = getFileName;
 
 interface Props {
   apiItem: ApiItem;

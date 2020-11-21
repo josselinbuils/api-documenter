@@ -14,7 +14,7 @@ import colors from 'colors';
 export function applyInheritDoc(apiItem: ApiItem, apiModel: ApiModel): void {
   if (apiItem instanceof ApiDocumentedItem) {
     if (apiItem.tsdocComment) {
-      const inheritDocTag = apiItem.tsdocComment.inheritDocTag;
+      const { inheritDocTag } = apiItem.tsdocComment;
 
       if (inheritDocTag && inheritDocTag.declarationReference) {
         // Attempt to resolve the declaration reference
@@ -31,17 +31,15 @@ export function applyInheritDoc(apiItem: ApiItem, apiModel: ApiModel): void {
               }: ${result.errorMessage}`
             )
           );
-        } else {
-          if (
-            result.resolvedApiItem instanceof ApiDocumentedItem &&
-            result.resolvedApiItem.tsdocComment &&
-            result.resolvedApiItem !== apiItem
-          ) {
-            copyInheritedDocs(
-              apiItem.tsdocComment,
-              result.resolvedApiItem.tsdocComment
-            );
-          }
+        } else if (
+          result.resolvedApiItem instanceof ApiDocumentedItem &&
+          result.resolvedApiItem.tsdocComment &&
+          result.resolvedApiItem !== apiItem
+        ) {
+          copyInheritedDocs(
+            apiItem.tsdocComment,
+            result.resolvedApiItem.tsdocComment
+          );
         }
       }
     }

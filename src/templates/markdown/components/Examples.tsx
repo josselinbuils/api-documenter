@@ -5,7 +5,7 @@ import { CommentContent } from './CommentContent';
 import { Title } from './Title';
 
 export const Examples: FC<Props> = ({ apiItem }) => {
-  const tsdocComment = (apiItem as ApiDocumentedItem).tsdocComment;
+  const { tsdocComment } = apiItem as ApiDocumentedItem;
   const exampleBlocks = tsdocComment
     ? tsdocComment.customBlocks.filter(
         x =>

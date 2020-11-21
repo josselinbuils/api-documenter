@@ -4,7 +4,6 @@ export const TableHead: FC = ({ children }) => (
   <>
     {children}
     {'|\n'}
-    {Children.map(children, () => '| --- ')}
-    {'|'}
+    {Children.map(children, () => '| --- ')}|
   </>
 );

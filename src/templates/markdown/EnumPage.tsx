@@ -1,12 +1,10 @@
 import { ApiEnum } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import {
-  Description,
-  EnumMemberTable,
-  PageHeader,
-  Signature,
-  Warnings
-} from './components';
+import { Description } from './components/Description';
+import { EnumMemberTable } from './components/EnumMemberTable';
+import { PageHeader } from './components/PageHeader';
+import { Signature } from './components/Signature';
+import { Warnings } from './components/Warnings/Warnings';
 
 export const EnumPage: FC<Props> = ({ apiEnum }) => (
   <>

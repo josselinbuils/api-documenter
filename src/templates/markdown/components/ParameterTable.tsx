@@ -1,15 +1,13 @@
 import { ApiParameterListMixin } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
 import { CommentContent } from './CommentContent';
-import {
-  ColumnHead,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TypeCell
-} from './Table';
+import { ColumnHead } from './Table/ColumnHead';
+import { Table } from './Table/Table';
+import { TableBody } from './Table/TableBody';
+import { TableCell } from './Table/TableCell';
+import { TableHead } from './Table/TableHead';
+import { TableRow } from './Table/TableRow';
+import { TypeCell } from './Table/TypeCell';
 import { Title } from './Title';
 
 export const ParameterTable: FC<Props> = ({
@@ -38,7 +36,7 @@ export const ParameterTable: FC<Props> = ({
                 {apiParameter.tsdocParamBlock && (
                   <CommentContent
                     docSection={apiParameter.tsdocParamBlock.content}
-                    inArray={true}
+                    inArray
                   />
                 )}
               </TableCell>

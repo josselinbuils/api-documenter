@@ -1,15 +1,13 @@
 import { ApiFunction } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
-import {
-  Description,
-  Examples,
-  PageHeader,
-  ParameterTable,
-  Returns,
-  Signature,
-  Title,
-  Warnings
-} from './components';
+import { Description } from './components/Description';
+import { Examples } from './components/Examples';
+import { PageHeader } from './components/PageHeader';
+import { ParameterTable } from './components/ParameterTable';
+import { Returns } from './components/Returns';
+import { Signature } from './components/Signature';
+import { Title } from './components/Title';
+import { Warnings } from './components/Warnings/Warnings';
 
 export const FunctionPage: FC<Props> = ({ apiFunction }) => (
   <>

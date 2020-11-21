@@ -1,7 +1,7 @@
 import { ApiItem } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
 import { PAGE_ITEM_KINDS } from '../../../../constants';
-import { getApiItemLink } from '../../utils';
+import { getApiItemLink } from '../../utils/getApiItemLink';
 import { Link } from '../Link';
 import { TableCell } from './TableCell';
 
