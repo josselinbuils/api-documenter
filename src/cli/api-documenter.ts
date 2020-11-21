@@ -26,7 +26,7 @@ program
 
 console.log(colors.bold(`API Documenter v${version}`));
 
-const inputFile = program.inputFolder || 'dist/index.d.ts';
+const inputFile = program.inputFile || 'dist/index.d.ts';
 const outputFolder = program.outputFolder || 'doc';
 
 const inputPath = path.join(process.cwd(), inputFile);

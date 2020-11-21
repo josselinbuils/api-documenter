@@ -29,6 +29,11 @@ function makeTablePrettier(renderedTable: string): string {
             return '';
           }
           const lengthDiff = columnLengths[index - 1] - column.length;
+
+          if (Number.isNaN(lengthDiff)) {
+            throw new Error(`Invalid table:\n\n${renderedTable}`);
+          }
+
           const paddingChar = / -+ /.test(column) ? '-' : ' ';
           return `${column.slice(0, -1)}${new Array(lengthDiff + 1).join(
             paddingChar

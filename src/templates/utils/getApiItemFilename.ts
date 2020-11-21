@@ -19,9 +19,9 @@ export function getApiItemFilename(apiItem: ApiItem): string {
 
     if (
       ApiParameterListMixin.isBaseClassOf(hierarchyItem) &&
-      hierarchyItem.overloadIndex > 0
+      hierarchyItem.overloadIndex > 1
     ) {
-      qualifiedName += `_${hierarchyItem.overloadIndex}`;
+      qualifiedName += `_${hierarchyItem.overloadIndex - 1}`;
     }
 
     if (!excludedItemKinds.includes(hierarchyItem.kind)) {

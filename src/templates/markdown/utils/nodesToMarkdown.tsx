@@ -32,6 +32,28 @@ export function nodesToMarkdown(
   );
 }
 
+function addLineBreaks(
+  inArray: boolean,
+  previousSibling: DocNode | undefined
+): ReactElement | string | null {
+  const shouldAddSpaces =
+    previousSibling instanceof DocParagraph ||
+    previousSibling instanceof DocPlainText;
+
+  if (!shouldAddSpaces) {
+    return null;
+  }
+
+  return inArray ? (
+    <>
+      <br />
+      <br />
+    </>
+  ) : (
+    '\n\n'
+  );
+}
+
 function nodeToMarkdown(
   node: DocNode,
   inArray: boolean,
@@ -76,14 +98,11 @@ function nodeToMarkdown(
         node as DocParagraph
       );
 
-      return inArray && previousSibling instanceof DocParagraph ? (
+      return (
         <>
-          <br />
-          <br />
+          {addLineBreaks(inArray, previousSibling)}
           {nodesToMarkdown(nodes, inArray)}
         </>
-      ) : (
-        nodesToMarkdown(nodes, inArray)
       );
     }
 
