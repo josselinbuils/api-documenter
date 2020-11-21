@@ -1,6 +1,6 @@
 {
   "name": "@josselinbuils/api-documenter",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Markdown documentation generator for typescript.",
   "repository": {
     "type": "git",

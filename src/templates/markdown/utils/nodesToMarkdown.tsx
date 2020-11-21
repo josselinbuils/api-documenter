@@ -16,6 +16,7 @@ import React, { Fragment, ReactElement } from 'react';
 import { CodeBlock } from '../components/CodeBlock';
 import { CodeSpan } from '../components/CodeSpan';
 import { Link } from '../components/Link';
+import { removeConsecutiveSpaces } from './removeConsecutiveSpaces';
 
 export function nodesToMarkdown(
   nodes: readonly DocNode[],
@@ -115,10 +116,6 @@ function nodeToMarkdown(
     default:
       return '';
   }
-}
-
-function removeConsecutiveSpaces(str: string): string {
-  return str.replace(/ +/g, ' ');
 }
 
 function trim(str: string): string {
