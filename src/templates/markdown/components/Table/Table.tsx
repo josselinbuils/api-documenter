@@ -21,7 +21,7 @@ function makeTablePrettier(renderedTable: string): string {
 
   return renderedTable
     .split('\n')
-    .map(line =>
+    .map((line) =>
       line
         .split('|')
         .map((column, index) => {
@@ -42,7 +42,7 @@ function makeTablePrettier(renderedTable: string): string {
 function getColumnLengths(renderedTable: string): number[] {
   const columnLengths: number[] = [];
 
-  renderedTable.split('\n').forEach(line =>
+  renderedTable.split('\n').forEach((line) =>
     line
       .split('|')
       .slice(1, -1)

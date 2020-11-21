@@ -1,7 +1,7 @@
 import {
   ApiClass,
   ApiConstructor,
-  ApiItemKind
+  ApiItemKind,
 } from '@microsoft/api-extractor-model';
 import { filterApiItems } from './filterApiItems';
 

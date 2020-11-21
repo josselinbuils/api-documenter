@@ -4,5 +4,5 @@ export function filterApiItems(
   apiItems: readonly ApiItem[],
   apiItemKind: ApiItemKind
 ): ApiItem[] {
-  return apiItems.filter(apiItem => apiItem.kind === apiItemKind);
+  return apiItems.filter((apiItem) => apiItem.kind === apiItemKind);
 }

@@ -3,7 +3,7 @@ import {
   ApiPropertyItem,
   ApiReturnTypeMixin,
   ApiVariable,
-  Parameter
+  Parameter,
 } from '@microsoft/api-extractor-model';
 
 export function getType(input: any): string | undefined {

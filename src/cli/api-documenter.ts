@@ -50,7 +50,7 @@ console.log(`Extracts API from ${colors.blue(inputFile)}`);
 
 const apiExtractorConfig: any = {
   ...API_EXTRACTOR_BASE_CONFIG,
-  mainEntryPointFilePath: inputPath
+  mainEntryPointFilePath: inputPath,
 };
 apiExtractorConfig.docModel.apiJsonFilePath = apiJsonFilePath;
 

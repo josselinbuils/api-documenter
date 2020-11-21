@@ -2,7 +2,7 @@ import {
   ApiDocumentedItem,
   ApiItem,
   ApiReleaseTagMixin,
-  ReleaseTag
+  ReleaseTag,
 } from '@microsoft/api-extractor-model';
 import React, { FC } from 'react';
 import { Warning } from './Warning';

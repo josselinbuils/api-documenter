@@ -4,24 +4,24 @@ export const API_EXTRACTOR_BASE_CONFIG = {
   $schema:
     'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
   apiReport: {
-    enabled: false
+    enabled: false,
   },
   docModel: {
-    enabled: true
+    enabled: true,
   },
   dtsRollup: {
-    enabled: false
+    enabled: false,
   },
   tsdocMetadata: {
-    enabled: false
+    enabled: false,
   },
   messages: {
     extractorMessageReporting: {
       default: {
-        logLevel: 'none'
-      }
-    }
-  }
+        logLevel: 'none',
+      },
+    },
+  },
 };
 
 export const DOCUMENTATION_TITLE = 'API Documentation';
@@ -34,5 +34,5 @@ export const PAGE_ITEM_KINDS = [
   ApiItemKind.Method,
   ApiItemKind.Namespace,
   ApiItemKind.Package,
-  ApiItemKind.TypeAlias
+  ApiItemKind.TypeAlias,
 ];

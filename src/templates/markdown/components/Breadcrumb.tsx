@@ -10,7 +10,7 @@ const excludedItemKinds = [ApiItemKind.Model, ApiItemKind.EntryPoint];
 export const Breadcrumb: FC<Props> = ({ apiItem }) => {
   const hierarchyItems = apiItem
     .getHierarchy()
-    .filter(item => !excludedItemKinds.includes(item.kind));
+    .filter((item) => !excludedItemKinds.includes(item.kind));
 
   const apiPackage = hierarchyItems[0];
   const lastItem = hierarchyItems.pop() as ApiItem;

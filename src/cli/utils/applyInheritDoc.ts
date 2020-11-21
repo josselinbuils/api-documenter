@@ -2,7 +2,7 @@ import {
   ApiDocumentedItem,
   ApiItem,
   ApiItemContainerMixin,
-  ApiModel
+  ApiModel,
 } from '@microsoft/api-extractor-model';
 import { DocComment } from '@microsoft/tsdoc';
 import colors from 'colors';
@@ -26,9 +26,7 @@ export function applyInheritDoc(apiItem: ApiItem, apiModel: ApiModel): void {
         if (result.errorMessage) {
           console.log(
             colors.yellow(
-              `Warning: Unresolved @inheritDoc tag for ${
-                apiItem.displayName
-              }: ${result.errorMessage}`
+              `Warning: Unresolved @inheritDoc tag for ${apiItem.displayName}: ${result.errorMessage}`
             )
           );
         } else if (

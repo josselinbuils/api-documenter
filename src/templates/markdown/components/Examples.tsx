@@ -8,7 +8,7 @@ export const Examples: FC<Props> = ({ apiItem }) => {
   const { tsdocComment } = apiItem as ApiDocumentedItem;
   const exampleBlocks = tsdocComment
     ? tsdocComment.customBlocks.filter(
-        x =>
+        (x) =>
           x.blockTag.tagNameWithUpperCase ===
           StandardTags.example.tagNameWithUpperCase
       )

@@ -14,7 +14,7 @@ export const PackageOrNamespacePage: FC<Props> = ({ apiItem }) => {
     ['Namespace', ApiItemKind.Namespace],
     ['Function', ApiItemKind.Function],
     ['Type Alias', ApiItemKind.TypeAlias],
-    ['Variable', ApiItemKind.Variable]
+    ['Variable', ApiItemKind.Variable],
   ];
 
   return (

@@ -10,7 +10,7 @@ import {
   DocNodeKind,
   DocNodeTransforms,
   DocParagraph,
-  DocPlainText
+  DocPlainText,
 } from '@microsoft/tsdoc';
 import React, { Fragment, ReactElement } from 'react';
 import { CodeBlock } from '../components/CodeBlock';

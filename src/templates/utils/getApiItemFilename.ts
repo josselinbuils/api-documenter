@@ -1,13 +1,13 @@
 import {
   ApiItem,
   ApiItemKind,
-  ApiParameterListMixin
+  ApiParameterListMixin,
 } from '@microsoft/api-extractor-model';
 
 const excludedItemKinds = [
   ApiItemKind.EntryPoint,
   ApiItemKind.Model,
-  ApiItemKind.Package
+  ApiItemKind.Package,
 ];
 
 export function getApiItemFilename(apiItem: ApiItem): string {

@@ -1,6 +1,6 @@
 module.exports = [
   {
     regex: /\.(ts|tsx)$/,
-    commands: ['eslint', 'prettier --write', 'git add']
-  }
+    commands: ['eslint', 'prettier --write', 'git add'],
+  },
 ];

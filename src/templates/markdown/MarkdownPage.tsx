@@ -4,7 +4,7 @@ import {
   ApiFunction,
   ApiInterface,
   ApiItem,
-  ApiItemKind
+  ApiItemKind,
 } from '@microsoft/api-extractor-model';
 import React from 'react';
 import { Template } from '../../cli/Template';

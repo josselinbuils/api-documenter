@@ -12,7 +12,7 @@ import { Title } from './Title';
 
 export const ParameterTable: FC<Props> = ({
   apiParameterListMixin,
-  noTitle = false
+  noTitle = false,
 }) => {
   if (apiParameterListMixin.parameters.length === 0) {
     return null;
