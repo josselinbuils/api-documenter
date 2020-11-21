@@ -92,7 +92,7 @@ function useEventListener<
 | --------- | -------------------------------------------- | ----------- |
 | eventType | \`EventType\`                                  |             |
 | handler   | \`(event: WindowEventMap[EventType]) => void\` |             |
-| active    | \`boolean \`                                   |             |
+| active    | \`boolean\`                                    |             |
 
 ## Returns
 
@@ -110,18 +110,22 @@ exports[`api-documenter should generate doc useKeyMap.md should match snapshot 1
 Allows listening keyboard events.
 
 \`\`\`typescript
-function useKeyMap(keyMap: {
+function useKeyMap(
+  keyMap: {
     [keyStr: string]: (event: KeyboardEvent) => false | any;
-}, active?: boolean, priority?: number): void
+  },
+  active?: boolean,
+  priority?: number
+): void
 \`\`\`
 
 ## Parameters
 
-| Parameter | Type                                                               | Description |
-| --------- | ------------------------------------------------------------------ | ----------- |
-| keyMap    | \`{     [keyStr: string]: (event: KeyboardEvent) => false ǀ any; }\` |             |
-| active    | \`boolean\`                                                          |             |
-| priority  | \`number\`                                                           |             |
+| Parameter | Type                                                                       | Description |
+| --------- | -------------------------------------------------------------------------- | ----------- |
+| keyMap    | \`{<br>    [keyStr: string]: (event: KeyboardEvent) => false ǀ any;<br>  }\` |             |
+| active    | \`boolean\`                                                                  |             |
+| priority  | \`number\`                                                                   |             |
 
 ## Returns
 
@@ -139,8 +143,11 @@ exports[`api-documenter should generate doc useLazy.md should match snapshot 1`]
 Allows detecting when a given element is displayed in the viewport.
 
 \`\`\`typescript
-function useLazy<T extends HTMLElement>(elementRef: RefObject<T>, enabled?: boolean): {
-    hasBeenDisplayed: boolean;
+function useLazy<T extends HTMLElement>(
+  elementRef: RefObject<T>,
+  enabled?: boolean
+): {
+  hasBeenDisplayed: boolean;
 }
 \`\`\`
 
@@ -154,7 +161,7 @@ function useLazy<T extends HTMLElement>(elementRef: RefObject<T>, enabled?: bool
 ## Returns
 
 \`{
-    hasBeenDisplayed: boolean;
+  hasBeenDisplayed: boolean;
 }\`
 "
 `;
@@ -169,7 +176,9 @@ exports[`api-documenter should generate doc useList.md should match snapshot 1`]
 Allows managing lists easily.
 
 \`\`\`typescript
-function useList<T>(initialValues?: T[] | (() => T[])): [T[], ListManager<T>]
+function useList<T>(
+  initialValues?: T[] | (() => T[])
+): [T[], ListManager<T>]
 \`\`\`
 
 ## Parameters

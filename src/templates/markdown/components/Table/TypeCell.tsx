@@ -4,12 +4,13 @@ import { TableCell } from './TableCell';
 
 export const TypeCell: FC<Props> = ({ input }) => {
   const type = (getType(input) || '')
+    .trim()
     // Replaces | by ǀ to avoid breaking arrays
     .replace(/\|/g, 'ǀ')
-    // Replaces line breaks by spaces to avoid breaking arrays
-    .replace(/\n/g, ' ')
     // Uses non-breaking spaces
-    .replace(/ /g, '\u00A0');
+    .replace(/ /g, '\u00A0')
+    // Replaces line breaks by spaces to avoid breaking arrays
+    .replace(/\n/g, '<br>');
 
   return <TableCell>{type && `\`${type}\``}</TableCell>;
 };
